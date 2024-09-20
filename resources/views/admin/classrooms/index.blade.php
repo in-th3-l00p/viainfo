@@ -63,7 +63,7 @@
                             </div>
                         @endif
 
-                        <h2 class="text-xl font-bold">{{ $classroom->title }}</h2>
+                        <h2 class="text-xl font-bold">{{ $classroom->name }}</h2>
                         <div class="mb-auto h-18 overflow-hidden line-clamp-3 text-ellipsis">
                             {!! $classroom->description !!}
                         </div>
