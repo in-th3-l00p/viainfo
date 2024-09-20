@@ -1,0 +1,33 @@
+@mixin alert {
+    @apply
+        bg-white p-4 border-l-8 border-l-blue-600
+        rounded-md shadow-md
+        flex justify-between;
+}
+
+.alert-danger {
+    @include alert;
+    @apply border-l-red-400 relative;
+}
+
+.alert-close {
+    animation: alert-close 1s ease-in-out forwards;
+}
+
+@keyframes alert-close {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes show-cover {
+    from { height: 0; }
+    to { height: 100%; }
+}

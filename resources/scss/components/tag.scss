@@ -1,0 +1,18 @@
+@mixin tag {
+    @apply
+        rounded-2xl bg-indigo-600 text-white px-4 py-1;
+}
+
+.tag {
+    @include tag;
+    @apply
+        hover:scale-105 transition-all;
+}
+
+.tag-disabled {
+    @include tag;
+}
+
+.tag-toggled {
+    @apply bg-indigo-700;
+}

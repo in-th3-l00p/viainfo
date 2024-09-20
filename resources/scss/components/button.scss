@@ -1,0 +1,51 @@
+@mixin btn {
+    @apply
+        flex gap-4 items-center justify-center
+        px-8 py-2 bg-indigo-600 rounded-md text-white
+        shadow-md hover:shadow-lg
+        hover:scale-105 transition-all;
+}
+
+.btn {
+    @include btn;
+}
+
+.btn-lg {
+    @apply text-lg;
+}
+
+.btn-shadow-dark {
+    @apply shadow-indigo-950 hover:shadow-indigo-950
+}
+
+@mixin nav-btn {
+    @apply w-8 h-8 p-0 rounded-none;
+}
+
+.nav-btn {
+    @include btn;
+    @include nav-btn;
+}
+
+.nav-btn-disabled {
+    @include btn;
+    @include nav-btn;
+    @apply hover:shadow-md hover:scale-100 bg-indigo-700;
+}
+
+.icon-btn {
+    @include btn;
+    @apply w-8 h-8 p-0;
+}
+
+.disabled-icon-btn {
+    @include btn;
+    @apply
+        w-8 h-8 p-0
+        hover:shadow-md hover:scale-100 bg-indigo-700;
+}
+
+.btn-group {
+    @apply
+        w-full flex items-center gap-2 flex-wrap;
+}

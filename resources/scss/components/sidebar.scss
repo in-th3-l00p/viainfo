@@ -1,0 +1,20 @@
+.sidebar-icon {
+    @apply scale-150 text-white;
+}
+
+.sidebar-nav-link {
+    @apply
+        text-white px-8 py-4 bg-indigo-700
+        flex justify-start items-center gap-4
+        hover:text-indigo-700 hover:bg-white
+        transition-all;
+
+    i { @apply transition-all; }
+    &:hover i { @apply text-indigo-700; }
+}
+
+.sidebar-nav-link-active {
+    @apply text-indigo-700 bg-white;
+
+    i { @apply text-indigo-700; }
+}

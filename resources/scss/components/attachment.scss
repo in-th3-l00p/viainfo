@@ -1,0 +1,31 @@
+.attachment {
+    @apply
+        bg-white rounded-md shadow-md w-48 aspect-square py-4
+        grid grid-rows-4 justify-center items-center
+        hover:scale-105 hover:shadow-xl transition-all;
+
+    .icon {
+        @apply
+            row-span-2 text-indigo-600 mx-auto scale-150
+    }
+
+    .title {
+        @apply text-center;
+    }
+}
+
+.attachment-small {
+    @apply
+        bg-white rounded-md shadow-md w-36 aspect-square py-2
+        grid grid-rows-4 justify-center items-center
+        hover:scale-105 hover:shadow-xl transition-all;
+
+    .icon {
+        @apply
+            row-span-2 text-indigo-600 mx-auto;
+    }
+
+    .title {
+        @apply text-sm text-center mb-2;
+    }
+}

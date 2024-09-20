@@ -1,0 +1,21 @@
+@mixin input {
+    @apply
+        w-full p-2 rounded-md shadow-md border
+        focus:scale-105 focus:shadow-lg
+        hover:shadow-lg outline-0 transition-all;
+
+    &::placeholder {
+        @apply text-gray-400;
+    }
+}
+
+.input {
+    @include input;
+}
+
+.dark-input {
+    @include input;
+    @apply
+        shadow-indigo-950 border-white bg-indigo-900 text-white
+        focus:shadow-indigo-950 hover:shadow-indigo-950;
+}

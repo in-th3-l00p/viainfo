@@ -1,0 +1,16 @@
+.table {
+    @apply
+        shadow-lg text-lg bg-white
+        rounded-md border-0 border-separate;
+
+    th, td {
+        @apply border-0 py-2 px-4;
+    }
+
+    thead tr th:first-child { @apply rounded-tl-md; }
+    thead tr th:last-child { @apply rounded-tr-md; }
+
+    th {
+        @apply bg-indigo-700 text-white;
+    }
+}

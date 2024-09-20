@@ -1,0 +1,28 @@
+/* tailwind */
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+/* font awesome */
+@import './fontawesome/css/all.css';
+
+/* tailwind components */
+@import "components/button";
+@import "components/input";
+@import "components/form-group";
+@import "components/label";
+@import "components/card";
+@import "components/alert";
+@import "components/sidebar";
+@import "components/table";
+@import "components/select";
+@import "components/tag";
+@import "components/typography";
+@import "components/layout";
+
+/* animations */
+@import "animations/fadein";
+
+body {
+    @apply bg-gray-100;
+}

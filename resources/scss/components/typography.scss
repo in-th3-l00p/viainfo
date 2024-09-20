@@ -1,0 +1,11 @@
+.page-title {
+    @apply text-5xl font-bold;
+}
+
+.section-title {
+    @apply text-3xl font-medium mb-4;
+}
+
+.empty-text {
+    @apply text-center text-zinc-400 text-lg;
+}
