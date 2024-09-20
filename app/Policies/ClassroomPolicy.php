@@ -13,7 +13,9 @@ class ClassroomPolicy
     }
 
     public function view(User $user, Classroom $classroom): bool {
-        return $user->role === "admin";
+        return
+            $user->role === "admin" ||
+            $classroom->users->contains($user);
     }
 
     public function create(User $user): bool {
@@ -21,7 +23,13 @@ class ClassroomPolicy
     }
 
     public function update(User $user, Classroom $classroom): bool {
-        return $user->role === "admin";
+        return
+            $user->role === "admin" ||
+            $classroom
+                ->users()
+                ->where("user_id", $user->id)
+                ->where("role", "teacher")
+                ->exists();
     }
 
     public function delete(User $user, Classroom $classroom): bool {
