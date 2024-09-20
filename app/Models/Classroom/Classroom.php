@@ -3,7 +3,6 @@
 namespace App\Models\Classroom;
 
 use App\Models\User;
-use Illuminate\Container\Attributes\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -36,7 +35,7 @@ class Classroom extends Model
      */
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, "classroom_tag");
+        return $this->belongsToMany(ClassroomTag::class);
     }
 
     /**
