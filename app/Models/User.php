@@ -55,4 +55,15 @@ class User extends Authenticatable
         return $this
             ->hasMany(Classroom::class, 'owner_id');
     }
+
+    /**
+     * Classrooms the user is part of (either as student or teacher).
+     * @return HasMany: User has many classrooms
+     */
+    public function classrooms(): HasMany {
+        return $this
+            ->belongsToMany(Classroom::class)
+            ->withPivot('role')
+            ->withTimestamps();
+    }
 }

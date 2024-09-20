@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Container\Attributes\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Classroom extends Model
@@ -19,11 +21,52 @@ class Classroom extends Model
         "owner_id"
     ];
 
-    public function owner() {
+    /**
+     * represented by the owner_id column
+     * @return BelongsTo: the owner of the classroom
+     */
+    public function owner(): BelongsTo
+    {
         return $this->belongsTo(User::class, "owner_id");
     }
 
-    public function tags() {
+    /**
+     * all the classroom's tags
+     * @return BelongsToMany: the tags associated with this classroom
+     */
+    public function tags(): BelongsToMany
+    {
         return $this->belongsToMany(Tag::class, "classroom_tag");
+    }
+
+    /**
+     * all the classroom's users (students and teachers)
+     * @return BelongsToMany: the users associated with this classroom
+     */
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, "classroom_user")
+            ->withPivot("role")
+            ->withTimestamps();
+    }
+
+    /**
+     * all the classroom's students
+     * @return BelongsToMany: the students associated with this classroom
+     */
+    public function students(): BelongsToMany
+    {
+        return $this->users()
+            ->wherePivot("role", "=", "student");
+    }
+
+    /**
+     * all the classroom's teachers
+     * @return BelongsToMany: the teachers associated with this classroom
+     */
+    public function teachers(): BelongsToMany
+    {
+        return $this->users()
+            ->wherePivot("role", "=", "teacher");
     }
 }
