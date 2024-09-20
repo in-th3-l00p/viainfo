@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Classroom;
+namespace App\Http\Controllers\Admin\Classrooms;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classroom\ClassroomTag;
+use App\Models\Classroom\Classroom;
 use Illuminate\Http\Request;
 
-class ClassroomTagController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class ClassroomTagController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ClassroomTag $classroomTag)
+    public function show(Classroom $classroom)
     {
         //
     }
@@ -43,7 +43,7 @@ class ClassroomTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ClassroomTag $classroomTag)
+    public function edit(Classroom $classroom)
     {
         //
     }
@@ -51,7 +51,7 @@ class ClassroomTagController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ClassroomTag $classroomTag)
+    public function update(Request $request, Classroom $classroom)
     {
         //
     }
@@ -59,7 +59,7 @@ class ClassroomTagController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ClassroomTag $classroomTag)
+    public function destroy(Classroom $classroom)
     {
         //
     }

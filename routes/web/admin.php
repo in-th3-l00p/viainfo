@@ -10,4 +10,5 @@ Route::prefix("/admin")
             ->name("admin.dashboard");
 
         require "admin/users.php";
+        require "admin/classroom.php";
     });

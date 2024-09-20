@@ -36,6 +36,13 @@
             />
 
             <x-ui.dashboard.quick-access
+                :title="__('Classrooms')"
+                :description="__('Access the platform\'s classrooms')"
+                :href="route('admin.classrooms.index')"
+                icon="fa-chalkboard"
+            />
+
+            <x-ui.dashboard.quick-access
                 :title="__('Profile')"
                 :description="__('Access your profile')"
                 :href="route('account.index')"

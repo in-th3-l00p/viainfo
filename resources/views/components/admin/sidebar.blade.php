@@ -15,5 +15,12 @@
         {{ __("Users") }}
     </x-ui.sidebar.link>
 
+    <x-ui.sidebar.link
+        route="admin.classrooms.index"
+        icon="fa-chalkboard"
+    >
+        {{ __("Classrooms") }}
+    </x-ui.sidebar.link>
+
     <x-ui.sidebar.user />
 </x-ui.sidebar>
