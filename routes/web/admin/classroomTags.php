@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\Classrooms\ClassroomTagController;
 use Illuminate\Support\Facades\Route;
 
 Route::delete(
-    "/classrooms/{test_project}/tags",
+    "/classrooms/{classroom}/tags",
     [ClassroomTagController::class, "destroyBatch"]
 )
     ->name("admin.classrooms.tags.destroyBatch");

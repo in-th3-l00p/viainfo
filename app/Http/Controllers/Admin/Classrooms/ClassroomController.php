@@ -65,11 +65,24 @@ class ClassroomController extends Controller
         Classroom $classroom
     )
     {
-        $classroom->update($request->validate([
-            "name" => "required|max:255|unique:classrooms,name",
-            "slug" => "required|max:255|unique:classrooms,slug",
+        $request->validate([
+            "name" => "required|max:255",
+            "slug" => "required|max:255",
             "description" => "required|max:1000",
-        ]));
+        ]);
+        if ($request->name !== $classroom->name) {
+            $request->validate([
+                "name" => "unique:classrooms,name"
+            ]);
+            $classroom->update(["name" => $request->name]);
+        }
+        if ($request->slug !== $classroom->slug) {
+            $request->validate([
+                "slug" => "unique:classrooms,slug"
+            ]);
+            $classroom->update([ "slug" => $request->slug ]);
+        }
+        $classroom->update([ "description" => $request->description ]);
         return view("admin.classrooms.show", [
             "classroom" => $classroom
         ]);
