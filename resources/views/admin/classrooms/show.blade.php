@@ -2,7 +2,9 @@
 
 <!-- todo issue with generateSlug function have no idea why !-->
 @push("vite")
-    @vite([ "resources/js/admin/classrooms/create.js" ])
+    @vite([
+        "resources/js/admin/classrooms/create.js"
+    ])
 @endpush
 
 @section("content")
@@ -26,14 +28,21 @@
         <!-- tab system !-->
         <div x-data="{ tab: $persist('feed') }">
             <x-admin.classrooms.tabs/>
-            <section x-show="tab === 'people'">
+            <section
+                x-show="tab === 'people'"
+                x-data="{ inviteModalOpened: false }"
+            >
                 <h2 class="section-title">{{ __("People") }}</h2>
 
+                @livewire("admin.classrooms.invite-modal", [
+                    "classroom" => $classroom
+                ])
                 <x-admin.operations.container>
                     <button
                         type="button"
                         class="icon-btn"
                         title={{ __("Add") }}
+                        @click="inviteModalOpened = true"
                     >
                         <i class="fas fa-plus"></i>
                     </button>
