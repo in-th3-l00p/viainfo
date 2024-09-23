@@ -27,6 +27,7 @@
         <div x-data="{ tab: $persist('feed') }">
             <x-admin.classrooms.tabs/>
             <section x-show="tab === 'people'">
+                <x-admin.classrooms.invite-people-modal />
                 <h2 class="section-title">{{ __("People") }}</h2>
 
                 <x-admin.operations.container>
