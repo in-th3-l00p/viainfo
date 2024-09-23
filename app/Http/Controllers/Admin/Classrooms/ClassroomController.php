@@ -29,7 +29,7 @@ class ClassroomController extends Controller
         $request->validate([
             "name" => "required|max:255|unique:classrooms,name",
             "slug" => "required|max:255|unique:classrooms,slug",
-            "description" => "required|max:1000",
+            "description" => "nullable|max:1000",
         ]);
 
         $classroom = Classroom::create([
@@ -68,7 +68,7 @@ class ClassroomController extends Controller
         $request->validate([
             "name" => "required|max:255",
             "slug" => "required|max:255",
-            "description" => "required|max:1000",
+            "description" => "nullable|max:1000",
         ]);
         if ($request->name !== $classroom->name) {
             $request->validate([
