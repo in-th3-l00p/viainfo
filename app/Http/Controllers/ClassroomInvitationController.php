@@ -17,11 +17,13 @@ class ClassroomInvitationController extends Controller
         Classroom $classroom
     ) {
         // checking if the user is invited to the classroom
-        $invitation = $classroom
+        Gate::denyAsNotFound(!$classroom
             ->invitedUsers()
-            ->where("user_id", "=", $request->user()->id);
-        Gate::denyAsNotFound(!$invitation->exists());
-        $invitation->delete();
+            ->where("user_id", "=", $request->user()->id)
+            ->exists());
+        $classroom
+            ->invitedUsers()
+            ->detach($request->user());
 
         // adding user to the classroom
         $classroom->users()->attach($request->user());
@@ -37,11 +39,13 @@ class ClassroomInvitationController extends Controller
         Request $request,
         Classroom $classroom
     ) {
-        $invitation = $classroom
+        Gate::denyAsNotFound(!$classroom
             ->invitedUsers()
-            ->where("user_id", "=", $request->user()->id);
-        Gate::denyAsNotFound(!$invitation->exists());
-        $invitation->delete();
+            ->where("user_id", "=", $request->user()->id)
+            ->exists());
+        $classroom
+            ->invitedUsers()
+            ->detach($request->user());
         return redirect()
             ->route("classrooms.index")
             ->with("success", "Invitation rejected");

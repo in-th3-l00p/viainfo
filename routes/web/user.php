@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Classrooms\ClassroomTagController;
 use App\Http\Controllers\ClassroomInvitationController;
 use App\Http\Controllers\User\Classrooms\ClassroomController;
 use App\Http\Controllers\User\UserController;
@@ -15,7 +16,10 @@ Route::middleware("auth")
             ->name("user.dashboard");
 
         // classrooms
-        Route::resource("classrooms", ClassroomController::class);
+        Route::resource("classrooms", ClassroomController::class)
+            ->only([ "index", "show" ]);
+        Route::resource("classrooms.tags", ClassroomTagController::class)
+            ->only([ "index", "show" ]);
 
         // classrooms invitations
         Route::post("/classrooms/{classroom}/invitations/accept", [

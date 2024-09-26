@@ -8,5 +8,12 @@
         {{ __("Dashboard") }}
     </x-ui.sidebar.link>
 
+    <x-ui.sidebar.link
+        route="classrooms.index"
+        icon="fa-chart-line"
+    >
+        {{ __("Classrooms") }}
+    </x-ui.sidebar.link>
+
     <x-ui.sidebar.user />
 </x-ui.sidebar>

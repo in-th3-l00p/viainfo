@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Classroom\Classroom;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,10 +20,10 @@ return new class extends Migration
 
             $table->enum('role', ['student', 'teacher'])
                 ->default('student');
-            $table->foreignId('classroom_id')
+            $table->foreignIdFor(Classroom::class)
                 ->constrained("classrooms")
                 ->onDelete('cascade');
-            $table->foreignId('user_id')
+            $table->foreignIdFor(User::class)
                 ->constrained("users")
                 ->onDelete('cascade');
         });

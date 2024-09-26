@@ -14,7 +14,7 @@ class ClassroomController extends Controller
     {
         Gate::authorize("viewAny", Classroom::class);
         return view("user.classrooms.index", [
-            "classrooms" => Auth::user()->classrooms
+            "classrooms" => Auth::user()->classrooms()->paginate()
         ]);
     }
 

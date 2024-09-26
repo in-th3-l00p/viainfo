@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table
                 ->foreignIdFor(User::class)
-                ->constrained()
+                ->constrained("users")
                 ->cascadeOnDelete();
             $table
                 ->foreignIdFor(Classroom::class)
-                ->constrained()
+                ->constrained("classrooms")
                 ->cascadeOnDelete();
         });
     }

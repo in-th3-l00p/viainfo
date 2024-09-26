@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classroom\Classroom;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,15 +16,28 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'role' => 'admin'
         ]);
 
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'user@example.com'
         ]);
+
+        $xii = Classroom::factory()->create([
+            'name' => 'xii',
+            'slug' => 'xii',
+            'owner_id' => 1
+        ]);
+        $xi = Classroom::factory()->create([
+            'name' => 'xi',
+            'slug' => 'xi',
+            'owner_id' => 1
+        ]);
+
+        $xii->invitedUsers()->attach($user);
     }
 }

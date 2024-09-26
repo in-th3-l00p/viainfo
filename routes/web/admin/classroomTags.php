@@ -8,7 +8,7 @@ Route::delete(
     [ClassroomTagController::class, "destroyBatch"]
 )
     ->name("admin.classrooms.tags.destroyBatch");
-Route::prefix("/classrooms")
+Route::prefix("/classrooms") // todo why tf the routes look like admin.tags ????? fix this
     ->resource(
         "tags",
         ClassroomTagController::class,
