@@ -20,7 +20,7 @@ class AuthController extends Controller {
 
         if (!Auth::attempt($body))
             return redirect()
-                ->route("login.form")
+                ->route("login")
                 ->withErrors([
                     "auth" => "Invalid email or password"
                 ]);
@@ -31,7 +31,7 @@ class AuthController extends Controller {
     public function logout() {
         Auth::logout();
         return redirect()
-            ->route("login.form")
+            ->route("login")
             ->with(["success", "Logout successfully"]);
     }
 }
