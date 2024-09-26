@@ -22,6 +22,17 @@ class InviteModal extends Component
     }
 
     public function invite() {
-        dd($this->selectedUsers);
+        $this->validate([
+            "selectedUsers" => "required|array|min:1",
+            "selectedUsers.*" => "exists:users,id"
+        ]);
+        foreach ($this->selectedUsers as $userId) {
+            if ($this->classroom->invitedUsers()->where("user_id", "=", $userId)->exists())
+                continue;
+            $this
+                ->classroom
+                ->invitedUsers()
+                ->attach($userId);
+        }
     }
 }

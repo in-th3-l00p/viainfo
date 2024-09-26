@@ -68,4 +68,12 @@ class Classroom extends Model
         return $this->users()
             ->wherePivot("role", "=", "teacher");
     }
+
+    /**
+     * All the pending invited users
+     * @return BelongsToMany : pending invited users
+     */
+    public function invitedUsers(): BelongsToMany {
+        return $this->belongsToMany(User::class, "classroom_invitations");
+    }
 }

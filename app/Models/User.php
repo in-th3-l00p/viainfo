@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Classroom\Classroom;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -66,5 +68,13 @@ class User extends Authenticatable
             ->belongsToMany(Classroom::class)
             ->withPivot('role')
             ->withTimestamps();
+    }
+
+    /**
+     * All the pending classroom invitations
+     * @return BelongsToMany : pending classroom invitations
+     */
+    public function classroomInvitations(): BelongsToMany {
+        return $this->belongsToMany(Classroom::class, "classroom_invitations");
     }
 }
