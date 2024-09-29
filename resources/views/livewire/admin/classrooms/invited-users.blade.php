@@ -2,7 +2,7 @@
 <div @class(["mb-8" => $count])>
     @if ($count > 0)
         <h2 class="mb-2">{{ __("Invited people") }}</h2>
-        <ul role="list" class="divide-y divide-gray-100">
+        <ul role="list" class="divide-y divide-gray-100 rounded-md shadow-md">
             @foreach ($classroom->invitedUsers as $user)
                 <li @class([
                     "flex justify-between gap-x-6 py-5 bg-white px-4",
