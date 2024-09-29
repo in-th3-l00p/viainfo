@@ -1,6 +1,6 @@
 <section
     x-show="tab === 'people'"
-    x-data="{ inviteModalOpened: false }"
+    x-data="{ inviteModalOpened: $persist(false) }"
 >
     @livewire("admin.classrooms.invite-modal", [
         "classroom" => $classroom

@@ -5,12 +5,18 @@ namespace App\Livewire\Admin\Classrooms;
 use App\Models\Classroom\Classroom;
 use App\Models\User;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class InviteModal extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+
     public Classroom $classroom;
     public $selectedUsers = [];
+
     public string $search = "";
 
     public function render()
@@ -20,11 +26,17 @@ class InviteModal extends Component
                 ->whereDoesntHave("classrooms", function ($query) {
                     $query->where("classroom_id", "=", $this->classroom->id);
                 })
-                ->when(strlen($this->search) > 0, function ($query) {
-                    $query
-                        ->where("name", "like", "%{$this->search}%")
-                        ->orWhere("email", "like", "%{$this->search}%");
+                ->whereDoesntHave("classroomInvitations", function ($query) {
+                    $query->where("classroom_id", "=", $this->classroom->id);
                 })
+                ->when(strlen($this->search) > 0, function ($query) {
+                    $query->where(function ($query) {
+                        $query
+                            ->where("name", "like", "%{$this->search}%")
+                            ->orWhere("email", "like", "%{$this->search}%");
+                    });
+                })
+                ->orderBy("name")
                 ->paginate(5)
         ]);
     }

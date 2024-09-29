@@ -10,7 +10,7 @@
 >
     <form
         @class([
-            "bg-white p-8 rounded-md shadow-md h-[670px] w-[500px]",
+            "bg-white p-8 rounded-md shadow-md w-full max-w-xl",
             "flex flex-col justify-between gap-4",
         ])
         wire:submit.prevent="invite"
@@ -42,7 +42,7 @@
                 >
             </div>
 
-            <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 mb-4">
+            <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 mb-4 h-[386px]">
                 @foreach($users as $user)
                     <div class="relative flex items-start gap-16 sm:gap-32 md:gap-64 py-4">
                         <div class="min-w-0 flex-1 text-sm leading-6">
