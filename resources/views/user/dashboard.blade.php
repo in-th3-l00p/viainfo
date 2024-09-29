@@ -35,6 +35,13 @@
                 :href="route('account.index')"
                 icon="fa-user"
             />
+
+            <x-ui.dashboard.quick-access
+                :title="__('Classrooms')"
+                :description="__('Access your classrooms')"
+                :href="route('classrooms.index')"
+                icon="fa-chalkboard"
+            />
         </div>
     </x-layout>
 @endsection

@@ -15,7 +15,7 @@
         </x-slot:subtitle>
 
         <div
-            class="flex flex-col gap-8 mb-8"
+            class="flex flex-col mb-8"
         >
             @if (request()->user()->classroomInvitations->count() > 0)
                 <h2>{{ __("Invitations") }}</h2>
@@ -62,7 +62,7 @@
                 </x-user.classrooms.classroom-display>
             @endforeach
 
-            <h2>{{ __("Your classrooms") }}</h2>
+            <h2 class="mb-2">{{ __("Your classrooms") }}</h2>
             @forelse($classrooms as $classroom)
                 <x-user.classrooms.classroom-display
                     :classroom="$classroom"

@@ -1,8 +1,8 @@
 <div
     @class([
-        "w-full",
+        "w-full max-w-4xl",
         "bg-white p-8 rounded-md shadow-md flex flex-col gap-4",
-        "hover:scale-105 hover:shadow-lg transition-all"
+        "hover:scale-105 hover:shadow-lg transition-all mb-8"
     ])
 >
     @if ($classroom->tags()->count() > 0)

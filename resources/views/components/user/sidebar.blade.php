@@ -10,7 +10,7 @@
 
     <x-ui.sidebar.link
         route="classrooms.index"
-        icon="fa-chart-line"
+        icon="fa-chalkboard"
     >
         {{ __("Classrooms") }}
     </x-ui.sidebar.link>
