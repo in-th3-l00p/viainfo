@@ -72,14 +72,19 @@
                                 tabindex="-1"
                                 x-bind:class="dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95' "
                             >
-                                <button
-                                    class="w-full px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                <a
+                                    href="{{ route('admin.classrooms.users.delete', [
+                                        'classroom' => $classroom,
+                                        'user' => $user
+                                    ]) }}"
+                                    class="block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
                                     role="menuitem"
                                     tabindex="-1"
                                     id="options-menu-0-item-0"
+                                    title="{{ __("Remove") }}"
                                 >
-                                    View profile<span class="sr-only">, Leslie Alexander</span>
-                                </button>
+                                    {{ __("Remove") }}<span class="sr-only">, {{ $user->name }}</span>
+                                </a>
                             </div>
                         </div>
                     </div>

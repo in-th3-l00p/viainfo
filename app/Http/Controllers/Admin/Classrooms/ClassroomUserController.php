@@ -59,6 +59,7 @@ class ClassroomUserController extends Controller
     }
 
     public function destroy(
+        Request $request,
         Classroom $classroom,
         User $user
     ) {
@@ -76,7 +77,7 @@ class ClassroomUserController extends Controller
             ->users()
             ->detach($user);
         return redirect()
-            ->back()
+            ->route("admin.classrooms.show", $classroom)
             ->with("success", "User removed");
     }
 }
