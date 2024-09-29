@@ -71,7 +71,32 @@
                                 aria-labelledby="options-menu-0-button"
                                 tabindex="-1"
                                 x-bind:class="dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95' "
+                                x-show="dropdownOpen"
                             >
+                                <form
+                                    action="{{ route("admin.classrooms.users.update", [
+                                        "classroom" => $classroom,
+                                        "user" => $user
+                                    ]) }}"
+                                    method="post"
+                                >
+                                    @csrf
+                                    @method("PUT")
+
+                                    <input type="hidden" name="role" value="{{ $user->classroomRole === "student" ? "teacher" : "student" }}">
+
+                                    <button
+                                        type="submit"
+                                        class="block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                        role="menuitem"
+                                        tabindex="-1"
+                                        id="options-menu-0-item-0"
+                                        title="{{ __("Make him") . " " . ($user->classroomRule === "student" ? __("Teacher") : __("Student")) }}"
+                                    >
+                                        {{ __("Make him") . " " . ($user->classroomRole === "student" ? __("Teacher") : __("Student")) }}<span class="sr-only">, {{ $user->name }}</span>
+                                    </button>
+                                </form>
+
                                 <a
                                     href="{{ route('admin.classrooms.users.delete', [
                                         'classroom' => $classroom,
