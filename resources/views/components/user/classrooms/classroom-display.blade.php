@@ -1,6 +1,6 @@
 <div
     @class([
-        "w-full max-w-4xl",
+        "w-full",
         "bg-white p-8 rounded-md shadow-md flex flex-col gap-4",
         "hover:scale-105 hover:shadow-lg transition-all mb-8"
     ])

@@ -1,5 +1,5 @@
 <aside
-    x-data="{ open: true }"
+    x-data="{ open: $persist(true) }"
     @class([
         "top-0 left-0 xs:sticky h-screen",
         "flex flex-col",

@@ -5,7 +5,7 @@
         <x-user.sidebar />
     @endif
 
-    <section class="layout-header">
+    <section class="layout">
         <header class="mb-16">
             @if ($breadcrumbPath)
                 <x-ui.breadcrumbs :path="$breadcrumbPath" />
