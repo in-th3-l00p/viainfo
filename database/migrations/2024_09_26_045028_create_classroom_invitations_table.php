@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('classroom_invitations', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
+
             $table
                 ->foreignIdFor(User::class)
                 ->constrained("users")

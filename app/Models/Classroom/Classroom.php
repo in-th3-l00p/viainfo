@@ -45,7 +45,7 @@ class Classroom extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, "classroom_user")
-            ->withPivot("role")
+            ->withPivot("role as classroomRole")
             ->withTimestamps();
     }
 
@@ -74,6 +74,9 @@ class Classroom extends Model
      * @return BelongsToMany : pending invited users
      */
     public function invitedUsers(): BelongsToMany {
-        return $this->belongsToMany(User::class, "classroom_invitations");
+        return $this
+            ->belongsToMany(User::class, "classroom_invitations")
+            ->withPivot("created_at as invited_at")
+            ->orderBy("invited_at", "desc");
     }
 }

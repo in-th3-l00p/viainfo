@@ -46,7 +46,11 @@
             @endforeach
         </div>
 
-        <button type="submit" class="btn">
+        <button
+            type="submit"
+            class="btn"
+            @click="inviteModalOpened = false"
+        >
             Invite
         </button>
     </form>

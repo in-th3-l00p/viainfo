@@ -34,5 +34,6 @@ class InviteModal extends Component
                 ->invitedUsers()
                 ->attach($userId);
         }
+        $this->dispatch("users-invited");
     }
 }
