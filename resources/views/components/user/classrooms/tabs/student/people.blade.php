@@ -1,9 +1,12 @@
 <section x-show="tab === 'people'">
-    <h2 class="section-title">{{ __("People") }}</h2>
     @if ($classroom->users()->count() > 0)
-        <ul role="list" class="divide-y divide-gray-100">
+        <ul role="list" class="divide-y divide-gray-100 shadow-md rounded-md">
             @foreach ($classroom->users as $user)
-                <li class="flex justify-between gap-x-6 py-5">
+                <li @class([
+                    "flex justify-between gap-x-6 py-5 bg-white px-4",
+                    "rounded-t-md" => $loop->first,
+                    "rounded-b-md" => $loop->last,
+                ])>
                     <div class="flex min-w-0 gap-x-4">
                         <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
                              src="/static/pfp.png"

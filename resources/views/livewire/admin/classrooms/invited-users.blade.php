@@ -1,10 +1,14 @@
 <?php $count = $classroom->invitedUsers()->count(); ?>
 <div @class(["mb-8" => $count])>
     @if ($count > 0)
-        <h2>{{ __("Invited people") }}</h2>
+        <h2 class="mb-2">{{ __("Invited people") }}</h2>
         <ul role="list" class="divide-y divide-gray-100">
             @foreach ($classroom->invitedUsers as $user)
-                <li class="flex justify-between gap-x-6 py-5">
+                <li @class([
+                    "flex justify-between gap-x-6 py-5 bg-white px-4",
+                    "rounded-t-md" => $loop->first,
+                    "rounded-b-md" => $loop->last,
+                ])>
                     <div class="flex min-w-0 gap-x-4">
                         <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
                              src="/static/pfp.png"
