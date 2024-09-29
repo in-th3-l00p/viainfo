@@ -1,5 +1,6 @@
-<div class="mb-8">
-    @if ($classroom->invitedUsers()->count() > 0)
+<?php $count = $classroom->invitedUsers()->count(); ?>
+<div @class(["mb-8" => $count])>
+    @if ($count > 0)
         <h2>{{ __("Invited people") }}</h2>
         <ul role="list" class="divide-y divide-gray-100">
             @foreach ($classroom->invitedUsers as $user)
