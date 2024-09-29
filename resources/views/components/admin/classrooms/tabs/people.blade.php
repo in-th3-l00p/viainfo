@@ -34,16 +34,16 @@
                                 {{ $user->name }}
                             </p>
                             <p class="mt-1 flex text-xs leading-5 text-gray-500">
-                                {{ __(ucfirst($user->classroomRole)) }}
+                                {{ $user->email }}
                             </p>
                         </div>
                     </div>
                     <div class="flex shrink-0 items-center gap-x-6">
                         <div class="hidden sm:flex sm:flex-col sm:items-end">
-                            <p class="text-sm leading-6 text-gray-900">Co-Founder / CEO</p>
-                            <p class="mt-1 text-xs leading-5 text-gray-500">Last seen
-                                <time datetime="2023-01-23T13:23Z">3h ago</time>
-                            </p>
+                            <p class="text-sm leading-6 text-gray-900">{{ __(ucfirst($user->classroomRole)) }}</p>
+{{--                            <p class="mt-1 text-xs leading-5 text-gray-500">Last seen--}}
+{{--                                <time datetime="2023-01-23T13:23Z">3h ago</time>--}}
+{{--                            </p>--}}
                         </div>
                         <div
                             x-data="{ dropdownOpen: false }"
