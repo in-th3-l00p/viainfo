@@ -4,20 +4,28 @@ namespace App\Livewire\Admin\Classrooms;
 
 use App\Models\Classroom\Classroom;
 use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class InviteModal extends Component
 {
     public Classroom $classroom;
     public $selectedUsers = [];
+    public string $search = "";
 
     public function render()
     {
         return view('livewire.admin.classrooms.invite-modal', [
             "users" => User::query()
-//                ->join("classroom_user", "users.id", "=", "classroom_user.user_id")
-//                ->where("classroom_user.classroom_id", "!=", $this->classroom->id)
-                ->get()
+                ->whereDoesntHave("classrooms", function ($query) {
+                    $query->where("classroom_id", "=", $this->classroom->id);
+                })
+                ->when(strlen($this->search) > 0, function ($query) {
+                    $query
+                        ->where("name", "like", "%{$this->search}%")
+                        ->orWhere("email", "like", "%{$this->search}%");
+                })
+                ->paginate(5)
         ]);
     }
 
@@ -35,5 +43,9 @@ class InviteModal extends Component
                 ->attach($userId);
         }
         $this->dispatch("users-invited");
+    }
+
+    #[On("search-updated")]
+    public function refresh() {
     }
 }

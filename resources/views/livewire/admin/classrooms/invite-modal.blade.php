@@ -9,46 +9,67 @@
     ])
 >
     <form
-        class="bg-white p-8 rounded-md shadow-md"
+        @class([
+            "bg-white p-8 rounded-md shadow-md h-[670px] w-[500px]",
+            "flex flex-col justify-between gap-4",
+        ])
         wire:submit.prevent="invite"
     >
-        <div class="flex items-center justify-between gap-8">
-            <h2 class="section-title !mb-0">{{ __("Invite") }}</h2>
+        <div>
+            <div class="flex items-center justify-between gap-8">
+                <h2 class="section-title !mb-0">{{ __("Invite") }}</h2>
 
-            <button
-                type="button"
-                class="icon-btn"
-                @click="inviteModalOpened = false"
-            >
-                <i class="fa-solid fa-x"></i>
-            </button>
-        </div>
+                <button
+                    type="button"
+                    class="icon-btn"
+                    @click="inviteModalOpened = false"
+                >
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </div>
 
-        <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 mb-4">
-            @foreach($users as $user)
-                <div class="relative flex items-start gap-16 sm:gap-32 md:gap-64 py-4">
-                    <div class="min-w-0 flex-1 text-sm leading-6">
-                        <label
-                            for="user-{{ $user->id }}"
-                            class="select-none font-medium text-gray-900"
-                        >{{ $user->name }}</label>
+            <!-- search input !-->
+            <div class="mt-4">
+                <label for="search" class="sr-only">{{ __("Search") }}</label>
+                <input
+                    type="text"
+                    class="input"
+                    placeholder="Search"
+                    name="search"
+                    id="search"
+                    wire:model="search"
+                    wire:input="$dispatch('search-updated')"
+                >
+            </div>
+
+            <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200 mb-4">
+                @foreach($users as $user)
+                    <div class="relative flex items-start gap-16 sm:gap-32 md:gap-64 py-4">
+                        <div class="min-w-0 flex-1 text-sm leading-6">
+                            <label
+                                for="user-{{ $user->id }}"
+                                class="select-none font-medium text-gray-900"
+                            >{{ $user->name }}</label>
+                            <p class="text-gray-500 text-sm">{{ $user->email }}</p>
+                        </div>
+                        <div class="ml-3 flex h-6 items-center">
+                            <input
+                                id="user-{{ $user->id }}"
+                                type="checkbox"
+                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                wire:model="selectedUsers"
+                                value="{{ $user->id }}"
+                            >
+                        </div>
                     </div>
-                    <div class="ml-3 flex h-6 items-center">
-                        <input
-                            id="user-{{ $user->id }}"
-                            type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                            wire:model="selectedUsers"
-                            value="{{ $user->id }}"
-                        >
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            {{ $users->links() }}
         </div>
 
         <button
             type="submit"
-            class="btn"
+            class="mt-auto btn self-start"
             @click="inviteModalOpened = false"
         >
             Invite

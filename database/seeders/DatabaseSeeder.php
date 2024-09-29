@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@example.com'
         ]);
 
+        User::factory(30)->create();
+
         $xii = Classroom::factory()->create([
             'name' => 'xii',
             'slug' => 'xii',
