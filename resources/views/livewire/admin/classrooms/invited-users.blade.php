@@ -5,7 +5,7 @@
         <ul role="list" class="divide-y divide-gray-100 rounded-md shadow-md">
             @foreach ($classroom->invitedUsers as $user)
                 <li @class([
-                    "flex justify-between gap-x-6 py-5 bg-white px-4",
+                    "flex justify-between gap-x-6 py-5 bg-white px-8",
                     "rounded-t-md" => $loop->first,
                     "rounded-b-md" => $loop->last,
                 ])>
