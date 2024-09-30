@@ -6,6 +6,7 @@ use App\Models\Classroom\Classroom;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ClassroomEvent extends Model
@@ -36,5 +37,16 @@ class ClassroomEvent extends Model
      */
     public function classroom() {
         return $this->belongsTo(Classroom::class);
+    }
+
+    /**
+     * Get the attendances of the event.
+     * @return BelongsToMany : The attendances of the event.
+     */
+    public function attendances(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(User::class)
+            ->withTimestamps();
     }
 }
