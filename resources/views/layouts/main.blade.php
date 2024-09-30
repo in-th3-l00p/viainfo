@@ -14,7 +14,7 @@
     @stack("vite")
     @livewireStyles
 </head>
-<body class="overflow-y-scroll">
+<body class="w-screen overflow-x-hidden">
     @yield("content")
     @livewireScripts
 </body>
