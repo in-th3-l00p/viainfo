@@ -19,3 +19,4 @@ Route::resource(
 require "classroomTags.php";
 require "classroomInvitations.php";
 require "classroomUsers.php";
+require "classroomEvents.php";

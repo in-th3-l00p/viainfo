@@ -1,3 +1,15 @@
-<div>
-    <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
-</div>
+<section x-show="tab === 'events'">
+    <x-admin.operations.container class="mb-8">
+        <a
+            href="{{ route(
+                "admin.classrooms.events.create",
+                [ "classroom" => $classroom ]
+            ) }}"
+            class="icon-btn"
+            title={{ __("Add") }}
+        >
+            <i class="fas fa-plus"></i>
+        </a>
+    </x-admin.operations.container>
+
+</section>
