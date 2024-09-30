@@ -25,4 +25,19 @@ class ClassroomController extends Controller
             "classroom" => $classroom
         ]);
     }
+
+    public function leaveForm(Classroom $classroom) {
+        Gate::authorize("view", $classroom);
+        return view("user.classrooms.leave", [
+            "classroom" => $classroom
+        ]);
+    }
+
+    public function leave(Classroom $classroom) {
+        Gate::authorize("view", $classroom);
+        Auth::user()->classrooms()->detach($classroom);
+        return redirect()
+            ->route("classrooms.index")
+            ->with("success", __("You have left the classroom successfully."));
+    }
 }
