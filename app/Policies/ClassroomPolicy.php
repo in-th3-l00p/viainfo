@@ -12,6 +12,10 @@ class ClassroomPolicy
         return true;
     }
 
+    public function viewTrashed(User $user): bool {
+        return $user->role === "admin";
+    }
+
     public function view(User $user, Classroom $classroom): bool {
         return
             $user->role === "admin" ||

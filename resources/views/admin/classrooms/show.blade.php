@@ -29,16 +29,7 @@
         <div x-data="{ tab: $persist('feed') }">
             <x-admin.classrooms.tabs/>
             <x-admin.classrooms.tabs.people :classroom="$classroom" />
-            <section
-                class="mb-16 bg-white rounded-md p-8 shadow-md"
-                x-show="tab === 'settings'"
-            >
-                <h2 class="section-title">{{ __("Settings") }}</h2>
-                <div class="ml-4 space-y-4">
-                    <x-admin.classrooms.tags :classroom="$classroom"/>
-                    <x-admin.classrooms.edit :classroom="$classroom"/>
-                </div>
-            </section>
+            <x-admin.classrooms.tabs.settings :classroom="$classroom" />
         </div>
     </x-layout>
 @endsection

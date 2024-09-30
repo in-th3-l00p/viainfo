@@ -43,7 +43,7 @@
 
                     <div
                         @class([
-                            "h-96 max-w-96",
+                            "h-96 max-w-96 w-full",
                             "bg-white p-8 rounded-md shadow-md flex flex-col gap-4",
                             "hover:scale-105 hover:shadow-lg transition-all"
                         ])
