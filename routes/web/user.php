@@ -15,31 +15,5 @@ Route::middleware("auth")
         ])
             ->name("user.dashboard");
 
-        // classrooms
-        Route::get("/classrooms/{classroom}/leave", [
-            ClassroomController::class,
-            "leaveForm"
-        ])
-            ->name("classrooms.leave.form");
-        Route::delete(
-            "/classrooms/{classroom}/leave",
-            [ ClassroomController::class, "leave" ]
-        )
-            ->name("classrooms.leave");
-        Route::resource("classrooms", ClassroomController::class)
-            ->only([ "index", "show" ]);
-        Route::resource("classrooms.tags", ClassroomTagController::class)
-            ->only([ "index", "show" ]);
-
-        // classrooms invitations
-        Route::post("/classrooms/{classroom}/invitations/accept", [
-            ClassroomInvitationController::class,
-            "accept"
-        ])
-            ->name("classrooms.invitations.accept");
-        Route::delete("/classrooms/{classroom}/invitations/reject", [
-            ClassroomInvitationController::class,
-            "reject"
-        ])
-            ->name("classrooms.invitations.reject");
+        require "user/classrooms.php";
     });
