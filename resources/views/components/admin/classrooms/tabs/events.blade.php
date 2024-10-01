@@ -68,7 +68,7 @@
         </div>
     @empty
         <p class="empty-text">
-            {{ __("No classrooms found.") }}
+            {{ __("No events found.") }}
         </p>
     @endforelse
 </section>
