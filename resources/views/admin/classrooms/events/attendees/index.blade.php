@@ -2,7 +2,7 @@
 
 @section("content")
     <x-layout
-        :title="__('Remove event') . ' \'\'' . $event->name . '\'\''"
+        :title="__('Attendees of event ') . ' \'\'' . $event->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.classrooms.index'), 'name' => __('Classrooms') ],

@@ -7,6 +7,7 @@ use App\Models\Classroom\Classroom;
 use App\Models\ClassroomEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AttendeeController extends Controller
 {
@@ -39,5 +40,14 @@ class AttendeeController extends Controller
         return redirect()
             ->back()
             ->with("success", __("The user has been marked as not attended"));
+    }
+
+    public function showAttendCode(Classroom $classroom, ClassroomEvent $event) {
+        Gate::authorize("view", [$classroom, $event]);
+        Gate::denyAsNotFound($event->self_attend === null);
+        return view(
+            "admin.classrooms.events.attendees.show-attend-code",
+            compact("classroom", "event")
+        );
     }
 }

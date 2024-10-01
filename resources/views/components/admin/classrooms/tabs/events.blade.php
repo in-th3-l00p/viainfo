@@ -42,7 +42,21 @@
                     {!! $event->description !!}
                 </div>
             </div>
-            <div>
+            <div class="scale-90">
+                @if ($event->self_attend)
+                    <a
+                        href="{{ route("admin.classrooms.events.attendees.show-attend-code", [
+                            "classroom" => $classroom,
+                            "event" => $event
+                        ]) }}"
+                        class="btn mb-4"
+                        title={{ __("Show attend code") }}
+                    >
+                        <i class="fas fa-eye"></i>
+                        {{ __("Show attend code") }}
+                    </a>
+                @endif
+
                 <a
                     href="{{ route(
                         "admin.classrooms.events.attendees.index",
