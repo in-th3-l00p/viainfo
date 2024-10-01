@@ -44,6 +44,18 @@
             <div>
                 <a
                     href="{{ route(
+                        "admin.classrooms.events.attendees.index",
+                        [ "classroom" => $classroom, "event" => $event ]
+                    ) }}"
+                    class="btn mb-4"
+                    title={{ __("Attendees") }}
+                >
+                    <i class="fas fa-user"></i>
+                    {{ __("Attendees") }}
+                </a>
+
+                <a
+                    href="{{ route(
                         "admin.classrooms.events.edit",
                         [ "classroom" => $classroom, "event" => $event ]
                     ) }}"
@@ -51,7 +63,7 @@
                     title={{ __("Edit") }}
                 >
                     <i class="fas fa-edit"></i>
-                    Edit
+                    {{ __("Edit") }}
                 </a>
 
                 <a
@@ -63,7 +75,7 @@
                     ]) }}"
                 >
                     <i class="fas fa-trash"></i>
-                    Delete
+                    {{ __("Delete") }}
                 </a>
         </div>
     @empty

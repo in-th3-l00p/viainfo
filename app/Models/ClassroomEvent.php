@@ -46,7 +46,7 @@ class ClassroomEvent extends Model
     public function attendances(): BelongsToMany
     {
         return $this
-            ->belongsToMany(User::class)
+            ->belongsToMany(User::class, "classroom_event_attendances")
             ->withTimestamps();
     }
 }
