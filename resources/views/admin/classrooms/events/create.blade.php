@@ -57,7 +57,7 @@
                 <label for="start" class="label w-32">{{ __("Start") }}:</label>
                 <input
                     type="datetime-local" name="start" id="start"
-                    @class(["input", "ring-2 ring-rose-600" => $errors->has("name")])
+                    @class(["input", "ring-2 ring-rose-600" => $errors->has("start")])
                     placeholder="{{ __("Event's start date") }}"
                     value="{{ old("start") }}"
                 >
@@ -67,9 +67,19 @@
                 <label for="end" class="label w-32">{{ __("End") }}:</label>
                 <input
                     type="datetime-local" name="end" id="end"
-                    @class(["input", "ring-2 ring-rose-600" => $errors->has("name")])
+                    @class(["input", "ring-2 ring-rose-600" => $errors->has("end")])
                     placeholder="{{ __("Event's end date") }}"
                     value="{{ old("end") }}"
+                >
+            </div>
+
+            <div class="form-group mb-8">
+                <label for="self_attend" class="label w-32">{{ __("Self attend") }}:</label>
+                <input
+                    type="checkbox" name="self_attend" id="self_attend"
+                    class="rounded-md scale-150"
+                    placeholder="{{ __("Event's self attend functionality") }}"
+                    @checked(old("self_attend"))
                 >
             </div>
 

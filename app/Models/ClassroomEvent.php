@@ -18,6 +18,7 @@ class ClassroomEvent extends Model
         "description",
         "start",
         "end",
+        "self_attend",
         "owner_id",
         "classroom_id"
     ];

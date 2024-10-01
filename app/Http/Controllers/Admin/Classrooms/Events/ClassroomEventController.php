@@ -24,6 +24,7 @@ class ClassroomEventController extends Controller
             "description" => "required|string",
             "start" => "required|date",
             "end" => "required|date",
+            "self_attend" => "nullable"
         ]);
 
         ClassroomEvent::create([
@@ -31,6 +32,7 @@ class ClassroomEventController extends Controller
             "description" => $request->description,
             "start" => $request->start,
             "end" => $request->end,
+            "self_attend" => $request->self_attend !== null,
             "classroom_id" => $classroom->id,
             "owner_id" => $request->user()->id,
         ]);
@@ -57,6 +59,7 @@ class ClassroomEventController extends Controller
             "description" => "required|string",
             "start" => "required|date",
             "end" => "required|date",
+            "self_attend" => "nullable"
         ]);
 
         $event->update([
@@ -64,6 +67,7 @@ class ClassroomEventController extends Controller
             "description" => $request->description,
             "start" => $request->start,
             "end" => $request->end,
+            "self_attend" => $request->self_attend !== null,
         ]);
 
         return redirect()
