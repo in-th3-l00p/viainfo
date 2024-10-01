@@ -7,6 +7,7 @@ use App\Models\Classroom\Classroom;
 use App\Models\ClassroomEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 
 class ClassroomEventController extends Controller
 {
@@ -33,6 +34,7 @@ class ClassroomEventController extends Controller
             "start" => $request->start,
             "end" => $request->end,
             "self_attend" => $request->self_attend !== null,
+            "attend_code" => $request->self_attend !== null ? Str::random(6) : null,
             "classroom_id" => $classroom->id,
             "owner_id" => $request->user()->id,
         ]);
@@ -69,6 +71,18 @@ class ClassroomEventController extends Controller
             "end" => $request->end,
             "self_attend" => $request->self_attend !== null,
         ]);
+        if (
+            $request->self_attend !== null &&
+            $event->attend_code === null
+        ) {
+            $event->update([
+                "attend_code" => Str::random(6)
+            ]);
+        } elseif ($request->self_attend === null) {
+            $event->update([
+                "attend_code" => null
+            ]);
+        }
 
         return redirect()
             ->route("admin.classrooms.show", $classroom)
