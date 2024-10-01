@@ -20,19 +20,19 @@ class ClassroomEventController extends Controller
     {
         Gate::authorize("create", [ClassroomEvent::class, $classroom]);
         $request->validate([
-            "title" => "required|string|max:255",
+            "name" => "required|string|max:255",
             "description" => "required|string",
-            "start_date" => "required|date",
-            "end_date" => "required|date",
+            "start" => "required|date",
+            "end" => "required|date",
         ]);
 
         ClassroomEvent::create([
-            "title" => $request->title,
+            "name" => $request->name,
             "description" => $request->description,
-            "start" => $request->start_date,
-            "end" => $request->end_date,
+            "start" => $request->start,
+            "end" => $request->end,
             "classroom_id" => $classroom->id,
-            "owner_id" => $request->user()->id(),
+            "owner_id" => $request->user()->id,
         ]);
 
         return redirect()
@@ -42,7 +42,7 @@ class ClassroomEventController extends Controller
 
     public function edit(Classroom $classroom, ClassroomEvent $event)
     {
-        Gate::authorize("update", $event);
+        Gate::authorize("update", [$classroom, $event]);
         return view(
             "admin.classrooms.events.edit",
             compact("classroom", "event")
@@ -51,19 +51,19 @@ class ClassroomEventController extends Controller
 
     public function update(Request $request, Classroom $classroom, ClassroomEvent $event)
     {
-        Gate::authorize("update", $event);
+        Gate::authorize("update", [$classroom, $event]);
         $request->validate([
-            "title" => "required|string|max:255",
+            "name" => "required|string|max:255",
             "description" => "required|string",
-            "start_date" => "required|date",
-            "end_date" => "required|date",
+            "start" => "required|date",
+            "end" => "required|date",
         ]);
 
         $event->update([
-            "title" => $request->title,
+            "name" => $request->name,
             "description" => $request->description,
-            "start" => $request->start_date,
-            "end" => $request->end_date,
+            "start" => $request->start,
+            "end" => $request->end,
         ]);
 
         return redirect()
@@ -73,7 +73,7 @@ class ClassroomEventController extends Controller
 
     public function delete(Classroom $classroom, ClassroomEvent $event)
     {
-        Gate::authorize("delete", $event);
+        Gate::authorize("delete", [$classroom, $event]);
         return view(
             "admin.classrooms.events.delete",
             compact("classroom", "event")
@@ -82,7 +82,7 @@ class ClassroomEventController extends Controller
 
     public function destroy(Classroom $classroom, ClassroomEvent $event)
     {
-        Gate::authorize("delete", $event);
+        Gate::authorize("delete", [$classroom, $event]);
         $event->delete();
         return redirect()
             ->route("admin.classrooms.show", $classroom)
@@ -103,7 +103,7 @@ class ClassroomEventController extends Controller
 
     public function restore(Classroom $classroom, ClassroomEvent $event)
     {
-        Gate::authorize("restore", $event);
+        Gate::authorize("restore", [$classroom, $event]);
         $event->restore();
         return redirect()
             ->route("admin.classrooms.show", $classroom)
