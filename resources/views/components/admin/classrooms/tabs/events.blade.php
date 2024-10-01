@@ -23,7 +23,8 @@
             ])
         >
             <div>
-                <h2 class="text-xl font-bold mb-4">{{ $event->name }}</h2>
+                <h2 class="text-xl font-bold">{{ $event->name }}</h2>
+                <p class="mb-4">{{ $event->owner->name }}</p>
                 @if ($event->start)
                     <p class="text-zinc-500">
                         {{ __("Starts at:") }}
