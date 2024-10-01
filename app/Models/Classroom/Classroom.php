@@ -90,6 +90,6 @@ class Classroom extends Model
     {
         return $this
             ->hasMany(ClassroomEvent::class)
-            ->orderBy("start");
+            ->orderBy("start", "desc");
     }
 }

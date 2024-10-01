@@ -78,6 +78,7 @@
                     <i class="fas fa-trash"></i>
                     {{ __("Delete") }}
                 </a>
+            </div>
         </div>
     @empty
         <p class="empty-text">
