@@ -35,4 +35,6 @@
             {{ __("No events found.") }}
         </p>
     @endforelse
+
+    {{ $events->links() }}
 </section>

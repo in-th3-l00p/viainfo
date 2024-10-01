@@ -22,7 +22,8 @@ class ClassroomController extends Controller
     {
         Gate::authorize("view", $classroom);
         return view("user.classrooms.show", [
-            "classroom" => $classroom
+            "classroom" => $classroom,
+            "events" => $classroom->events()->paginate(5)
         ]);
     }
 

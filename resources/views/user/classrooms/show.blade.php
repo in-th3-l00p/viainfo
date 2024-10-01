@@ -22,7 +22,10 @@
         <div x-data="{ tab: $persist('feed') }">
             <x-user.classrooms.tabs/>
             <x-user.classrooms.tabs.student.people :classroom="$classroom" />
-            <x-user.classrooms.tabs.student.events :classroom="$classroom" />
+            <x-user.classrooms.tabs.student.events
+                :classroom="$classroom"
+                :events="$events"
+            />
             <x-user.classrooms.tabs.student.settings :classroom="$classroom" />
         </div>
     </x-layout>

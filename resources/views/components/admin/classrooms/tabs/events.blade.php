@@ -13,7 +13,7 @@
         </a>
     </x-admin.operations.container>
 
-    @forelse ($classroom->events as $event)
+    @forelse ($events as $event)
         <div
             @class([
                 "w-full",
@@ -85,4 +85,6 @@
             {{ __("No events found.") }}
         </p>
     @endforelse
+
+    {{ $events->links() }}
 </section>
