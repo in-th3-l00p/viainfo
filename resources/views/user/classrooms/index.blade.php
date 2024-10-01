@@ -18,7 +18,7 @@
             class="flex flex-col mb-8"
         >
             @if (request()->user()->classroomInvitations->count() > 0)
-                <h2>{{ __("Invitations") }}</h2>
+                <h2 class="mb-2">{{ __("Invitations") }}</h2>
             @endif
             @foreach(request()->user()->classroomInvitations as $classroom)
                 <x-user.classrooms.classroom-display
