@@ -4,10 +4,10 @@
     <x-layout
         :title="__('Leave classroom') . ' \'\'' . $classroom->name . '\'\''"
         :breadcrumbPath="[
-            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.classrooms.index'), 'name' => __('Classrooms') ],
+            [ 'href' => route('dashboard'), 'name' => __('Dashboard') ],
+            [ 'href' => route('classrooms.index'), 'name' => __('Classrooms') ],
             [
-                'href' => route('admin.classrooms.show', [
+                'href' => route('classrooms.show', [
                     'classroom' => $classroom
                 ]),
                 'name' => __('Classroom') . ' \'\'' . $classroom->name . '\'\''
