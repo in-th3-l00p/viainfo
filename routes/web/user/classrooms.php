@@ -20,3 +20,4 @@ Route::resource("classrooms.tags", ClassroomTagController::class)
     ->only([ "index", "show" ]);
 
 require "classroomInvitations.php";
+require "classroomEvents.php";

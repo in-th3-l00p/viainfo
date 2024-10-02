@@ -29,6 +29,49 @@
                     {!! $event->description !!}
                 </div>
             </div>
+
+            <div class="flex flex col items-center justify-center gap-4">
+                @if ($event->self_attend && Carbon::now()->between(Carbon::create($event->start), Carbon::create($event->end)))
+                    @if ($event->attendances->contains(auth()->user()))
+                        <form
+                            method="post"
+                            action="{{ route("classrooms.events.unattend", [
+                                "classroom" => $classroom,
+                                "event" => $event
+                            ]) }}"
+                        >
+                            @csrf
+                            @method("DELETE")
+
+                            <button
+                                type="submit"
+                                title="{{ __("Unattended") }}"
+                                class="btn"
+                            >
+                                {{ __("Unattended") }}
+                            </button>
+                        </form>
+                    @else
+                        <a
+                            href="{{ route("classrooms.events.attend-code", [
+                                "classroom" => $classroom,
+                                "event" => $event
+                            ]) }}"
+                            title="{{ __("Attend") }}"
+                            class="btn"
+                        >
+                            {{ __("Attend") }}
+                        </a>
+                    @endif
+                @else
+                    <p>
+                        {{ $event->attendances->contains(auth()->user()) ?
+                            __("Attended") :
+                            __("Unattended")
+                        }}
+                    </p>
+                @endif
+            </div>
         </div>
     @empty
         <p class="empty-text">
