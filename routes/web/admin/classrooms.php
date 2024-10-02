@@ -16,7 +16,7 @@ Route::resource(
     ["as" => "admin"]
 );
 
-require "classroomTags.php";
+//require "classroomTags.php"; todo remove
 require "classroomInvitations.php";
 require "classroomUsers.php";
 require "classroomEvents.php";

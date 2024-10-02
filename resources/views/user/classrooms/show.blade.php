@@ -19,7 +19,7 @@
         </x-slot:subtitle>
 
         <!-- tab system !-->
-        <div x-data="{ tab: $persist('feed') }">
+        <div x-data="{ tab: $persist('people') }">
             <x-user.classrooms.tabs/>
             <x-user.classrooms.tabs.student.people :classroom="$classroom" />
             <x-user.classrooms.tabs.student.events

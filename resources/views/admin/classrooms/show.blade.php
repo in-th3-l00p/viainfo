@@ -16,21 +16,21 @@
             [ 'name' => __('Classroom') . ' \'\'' . $classroom->name . '\'\'' ],
         ]"
     >
-        <x-slot:subtitle>
+        <x-slot:subtitleLeave>
             <x-ui.layout.subtitle class="mb-4">
                 {!! $classroom->description !!}
             </x-ui.layout.subtitle>
             @if ($classroom->visibility === "private")
                 <p class="font-semibold mb-4">{{ __("Private") }}</p>
             @endif
-        </x-slot:subtitle>
+        </x-slot:subtitleLeave>
 
         <!-- tab system !-->
-        <div x-data="{ tab: $persist('feed') }">
+        <div x-data="{ tab: $persist('people') }">
             <x-admin.classrooms.tabs/>
             <x-admin.classrooms.tabs.people :classroom="$classroom" />
             <x-admin.classrooms.tabs.events
-                :classroom="$classroom"
+                :classroom="$classroomLeave"
                 :events="$events"
             />
             <x-admin.classrooms.tabs.settings :classroom="$classroom" />

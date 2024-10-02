@@ -22,11 +22,6 @@
                     icon="fa-plus"
                 />
                 <x-admin.operations.route
-                    :title="__('Classroom tags')"
-                    :href="route('admin.tags.index')"
-                    icon="fa-tags"
-                />
-                <x-admin.operations.route
                     :title="__('Classrooms trash')"
                     :href="route('admin.classrooms.trash')"
                     icon="fa-trash"

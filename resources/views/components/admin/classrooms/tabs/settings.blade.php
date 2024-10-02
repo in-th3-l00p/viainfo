@@ -5,7 +5,6 @@
     <div class="bg-white rounded-md p-8 shadow-md">
         <h2 class="section-title">{{ __("Settings") }}</h2>
         <div class="ml-4 space-y-4">
-            <x-admin.classrooms.tags :classroom="$classroom"/>
             <x-admin.classrooms.edit :classroom="$classroom"/>
         </div>
     </div>
