@@ -30,7 +30,7 @@
             <x-admin.classrooms.tabs/>
             <x-admin.classrooms.tabs.people :classroom="$classroom" />
             <x-admin.classrooms.tabs.events
-                :classroom="$classroomLeave"
+                :classroom="$classroom"
                 :events="$events"
             />
             <x-admin.classrooms.tabs.settings :classroom="$classroom" />

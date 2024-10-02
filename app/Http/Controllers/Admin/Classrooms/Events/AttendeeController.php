@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Gate;
 class AttendeeController extends Controller
 {
     public function index(Classroom $classroom, ClassroomEvent $event) {
+        Gate::authorize("update", [$classroom, $event]);
         return view("admin.classrooms.events.attendees.index", [
             "classroom" => $classroom,
             "event" => $event
@@ -24,6 +25,7 @@ class AttendeeController extends Controller
         User $user,
         Request $request
     ) {
+        Gate::authorize("update", [$classroom, $event]);
         $event->attendances()->attach($user);
         return redirect()
             ->back()
@@ -36,6 +38,7 @@ class AttendeeController extends Controller
         User $user,
         Request $request
     ) {
+        Gate::authorize("update", [$classroom, $event]);
         $event->attendances()->detach($user);
         return redirect()
             ->back()
@@ -43,7 +46,7 @@ class AttendeeController extends Controller
     }
 
     public function showAttendCode(Classroom $classroom, ClassroomEvent $event) {
-        Gate::authorize("view", [$classroom, $event]);
+        Gate::authorize("update", [$classroom, $event]);
         Gate::denyAsNotFound($event->self_attend === null);
         return view(
             "admin.classrooms.events.attendees.show-attend-code",

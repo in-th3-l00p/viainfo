@@ -4,17 +4,17 @@ use App\Http\Controllers\Admin\Classrooms\Events\ClassroomEventController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
-    "/admin/classrooms/{classroom}/events/{event}/delete",
+    "/classrooms/{classroom}/events/{event}/delete",
     [ClassroomEventController::class, "delete"]
 )
     ->name("admin.classrooms.events.delete");
 Route::get(
-    "/admin/classrooms/{classroom}/events/trash",
+    "/classrooms/{classroom}/events/trash",
     [ClassroomEventController::class, "trash"]
 )
     ->name("admin.classrooms.events.trash");
 Route::put(
-    "/admin/classrooms/{classroom}/events/{event}/restore",
+    "/classrooms/{classroom}/events/{event}/restore",
     [ClassroomEventController::class, "restore"]
 )
     ->withTrashed()
