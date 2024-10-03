@@ -32,8 +32,8 @@ class ClassroomEventController extends Controller
         Gate::allowIf(
             $event->self_attend &&
             Carbon::now()->between(
-                Carbon::create($event->start),
-                Carbon::create($event->end)
+                Carbon::create($event->start, "Europe/Bucharest"),
+                Carbon::create($event->end, "Europe/Bucharest")
             )
         );
         $request->validate([
@@ -57,8 +57,8 @@ class ClassroomEventController extends Controller
         Gate::allowIf(
             $event->self_attend &&
             Carbon::now()->between(
-                Carbon::create($event->start),
-                Carbon::create($event->end)
+                Carbon::create($event->start, "Europe/Bucharest"),
+                Carbon::create($event->end, "Europe/Bucharest")
             )
         );
         $event->attendances()->detach(auth()->id());

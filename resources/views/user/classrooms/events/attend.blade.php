@@ -4,7 +4,7 @@
     <x-layout
         :title="__('Attend at event') . ' \'\'' . $event->name . '\'\''"
         :breadcrumbPath="[
-            [ 'href' => route('dashboard'), 'name' => __('Dashboard') ],
+            [ 'href' => route('user.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('classrooms.index'), 'name' => __('Classrooms') ],
             [
                 'href' => route('classrooms.show', [
