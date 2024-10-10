@@ -9,6 +9,16 @@
         >
             @csrf
 
+            <div class="self-start">
+                <a
+                    href="{{ route("index") }}"
+                    class="text-sm font-semibold leading-7 text-indigo-600"
+                >
+                    <i class="fa-solid fa-arrow-left me-2"></i>
+                    {{ __("Back to home page") }}
+                </a>
+            </div>
+
             <img
                 src="/static/logo.svg" alt="logo"
                 class="w-32"

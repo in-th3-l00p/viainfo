@@ -22,7 +22,7 @@ class AuthController extends Controller {
             return redirect()
                 ->route("login")
                 ->withErrors([
-                    "auth" => "Invalid email or password"
+                    "auth" => __("Invalid email or password")
                 ]);
 
         return redirect()->route("index");
