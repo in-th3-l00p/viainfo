@@ -1,5 +1,5 @@
 <header
-    class="absolute inset-x-0 top-0 z-50"
+    class="absolute inset-x-0 top-0 z-50 scroll-smooth"
     x-data="{ sidebarOpen: false }"
 >
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -26,8 +26,8 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Despre") }}</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Contact") }}</a>
+            <a href="#{{ __("despre") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Despre") }}</a>
+            <a href="#{{ __("contact") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Contact") }}</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="{{ route("login") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Loghează-te") }} <span aria-hidden="true">&rarr;</span></a>
