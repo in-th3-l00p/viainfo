@@ -31,7 +31,13 @@
             </div>
 
             <div class="flex flex col items-center justify-center gap-4">
-                @if ($event->self_attend && Carbon::now()->between(Carbon::create($event->start), Carbon::create($event->end)))
+                @if (
+                    $event->self_attend &&
+                    Carbon::now()->between(
+                        Carbon::create($event->start, "Europe/Bucharest"),
+                        Carbon::create($event->end, "Europe/Bucharest")
+                    )
+                )
                     @if ($event->attendances->contains(auth()->user()))
                         <form
                             method="post"
