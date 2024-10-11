@@ -17,13 +17,15 @@ class RedirectAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->route()->getName() === "user.dashboard")
-            return redirect()->route("admin.dashboard");
-        if (
-            !Str::startsWith($request->route()->getName(), "admin.") &&
-            Route::has("admin." . $request->route()->getName())
-        )
-            return redirect()->route("admin." . $request->route()->getName());
+        if ($request->user()->role === "admin") {
+            if ($request->route()->getName() === "user.dashboard")
+                return redirect()->route("admin.dashboard");
+            if (
+                !Str::startsWith($request->route()->getName(), "admin.") &&
+                Route::has("admin." . $request->route()->getName())
+            )
+                return redirect()->route("admin." . $request->route()->getName());
+        }
         return $next($request);
     }
 }
