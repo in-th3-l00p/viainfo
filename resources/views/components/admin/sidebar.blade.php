@@ -22,5 +22,12 @@
         {{ __("Classrooms") }}
     </x-ui.sidebar.link>
 
+    <x-ui.sidebar.link
+        route="admin.contact.index"
+        icon="fa-message"
+    >
+        {{ __("Contact") }}
+    </x-ui.sidebar.link>
+
     <x-ui.sidebar.user />
 </x-ui.sidebar>

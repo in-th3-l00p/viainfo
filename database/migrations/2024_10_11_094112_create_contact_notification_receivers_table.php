@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact_notifications', function (Blueprint $table) {
+        Schema::create('contact_notification_receivers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
