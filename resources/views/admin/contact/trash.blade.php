@@ -76,5 +76,7 @@
                 {{ __("There are no submissions sent") }}
             </div>
         @endforelse
+
+        {{ $contacts->links() }}
     </x-layout>
 @endsection

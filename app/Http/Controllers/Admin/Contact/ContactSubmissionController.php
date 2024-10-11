@@ -14,7 +14,7 @@ class ContactSubmissionController extends Controller
     {
         Gate::authorize("viewAny", ContactSubmission::class);
         return view("admin.contact.index", [
-            "contacts" => ContactSubmission::latest()->paginate(10),
+            "contacts" => ContactSubmission::latest()->paginate(5),
             "receivers" => ContactNotificationReceiver::all()
         ]);
     }
@@ -61,7 +61,7 @@ class ContactSubmissionController extends Controller
         return view("admin.contact.trash", [
             "contacts" => ContactSubmission::onlyTrashed()
                 ->latest()
-                ->paginate(10)
+                ->paginate(5)
         ]);
     }
 

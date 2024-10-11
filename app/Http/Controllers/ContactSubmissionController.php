@@ -20,9 +20,10 @@ class ContactSubmissionController extends Controller
             "message" => "required|max:1000"
         ]));
 
-        return back()->with(
-            "success",
-            __("Contact submission created successfully")
-        );
+        return back()
+            ->with(
+                "success",
+                __("Contact submission created successfully")
+            );
     }
 }
