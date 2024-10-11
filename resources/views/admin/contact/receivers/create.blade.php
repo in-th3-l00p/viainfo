@@ -15,16 +15,16 @@
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
-        <!-- tab system !-->
+        <!-- typeTab system !-->
         <section
             class="mb-8"
-            x-data="{ tab: $persist('user') }"
+            x-data="{ typeTab: $persist('user') }"
         >
             <x-admin.contact.receiver.create-tab />
 
             <!-- user platform thang !-->
             <form
-                x-show="tab === 'user'"
+                x-show="typeTab === 'user'"
                 action="{{ route("admin.contact.receivers.store") }}"
                 method="post"
                 class="max-w-xl"
@@ -59,7 +59,7 @@
 
             <!-- custom type thang !-->
             <form
-                x-show="tab === 'custom'"
+                x-show="typeTab === 'custom'"
                 action="{{ route("admin.contact.receivers.store") }}"
                 method="post"
                 class="max-w-xl"
