@@ -66,6 +66,13 @@
                 :href="route('account.index')"
                 icon="fa-user"
             />
+
+            <x-ui.dashboard.quick-access
+                :title="__('Contact')"
+                :description="__('Access the platform\'s contact submissions')"
+                :href="route('admin.contact.index')"
+                icon="fa-message"
+            />
         </div>
     </x-layout>
 @endsection
