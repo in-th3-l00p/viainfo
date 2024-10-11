@@ -25,7 +25,9 @@ class AuthController extends Controller {
                     "auth" => __("Invalid email or password")
                 ]);
 
-        return redirect()->route("index");
+        if ($request->user()->role === "admin")
+            return redirect()->route("admin.dashboard");
+        return redirect()->route("user.dashboard");
     }
 
     public function logout() {

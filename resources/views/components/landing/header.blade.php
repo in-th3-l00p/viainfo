@@ -29,9 +29,24 @@
             <a href="#{{ __("despre") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Despre") }}</a>
             <a href="#{{ __("contact") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Contact") }}</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="{{ route("login") }}" class="text-sm font-semibold leading-6 text-gray-900">{{ __("Loghează-te") }} <span aria-hidden="true">&rarr;</span></a>
-        </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                @guest
+                    <a
+                        href="{{ route("login") }}"
+                        class="text-sm font-semibold leading-6 text-gray-900"
+                    >
+                        {{ __("Loghează-te") }} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                @endguest
+                @auth
+                    <a
+                        href="{{ route(request()->user()->role . ".dashboard") }}"
+                        class="text-sm font-semibold leading-6 text-gray-900"
+                    >
+                        {{ __("Dashboard") }} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                @endauth
+            </div>
     </nav>
     <div
         class="lg:hidden"
