@@ -53,14 +53,6 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function edit(Classroom $classroom)
-    {
-        Gate::authorize("update", $classroom);
-        return view("admin.classrooms.edit", [
-            "classroom" => $classroom
-        ]);
-    }
-
     public function update(
         Request   $request,
         Classroom $classroom
@@ -84,7 +76,7 @@ class ClassroomController extends Controller
             $classroom->update([ "slug" => $request->slug ]);
         }
         $classroom->update([ "description" => $request->description ]);
-        return view("admin.classrooms.show", [
+        return redirect()->route("admin.classrooms.show", [
             "classroom" => $classroom
         ]);
     }

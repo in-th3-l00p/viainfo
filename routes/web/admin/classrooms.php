@@ -14,7 +14,8 @@ Route::resource(
     "classrooms",
     ClassroomController::class,
     ["as" => "admin"]
-);
+)
+    ->except("edit");
 
 //require "classroomTags.php"; todo remove
 require "classroomInvitations.php";
