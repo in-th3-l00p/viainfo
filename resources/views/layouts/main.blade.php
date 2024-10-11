@@ -15,6 +15,7 @@
     @livewireStyles
 </head>
 <body class="w-screen overflow-x-hidden">
+    <x-ui.success-notification />
     @yield("content")
     @livewireScripts
 </body>

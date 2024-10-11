@@ -1,0 +1,17 @@
+$animation-duration: 5s;
+
+.success-notification {
+    animation: fade-out $animation-duration forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 100%;
+    }
+    90% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
