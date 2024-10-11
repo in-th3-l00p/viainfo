@@ -10,16 +10,6 @@ Route::get("/contact/receivers/{receiver}/delete", [
     "delete"
 ])
     ->name("admin.contact.receivers.delete");
-Route::get("/contact/receivers/trash", [
-    ContactNotificationReceiversController::class,
-    "trash"
-])
-    ->name("admin.contact.receivers.trash");
-Route::post("/contact-notification-receivers/{receiver}/restore", [
-    ContactNotificationReceiversController::class,
-    "restore"
-])
-    ->name("admin.contact.receivers.restore");
 Route::resource(
     "receivers",
     ContactNotificationReceiversController::class,
@@ -29,7 +19,7 @@ Route::resource(
     ->middleware("can:admin");
 
 // everything related to submissions
-Route::get("/contact/delete", [
+Route::get("/contact/{contact}/delete", [
     ContactSubmissionController::class,
     "delete"
 ])
@@ -39,15 +29,17 @@ Route::get("/contact/trash", [
     "trash"
 ])
     ->name("admin.contact.trash");
-Route::post("/contact/{contactSubmission}/restore", [
+Route::post("/contact/{contact}/restore", [
     ContactSubmissionController::class,
     "restore"
 ])
+    ->withTrashed()
     ->name("admin.contact.restore");
 Route::resource(
     "contact",
     ContactSubmissionController::class,
     [ "as" => "admin" ]
 )
+    ->withTrashed()
     ->only(["index", "show", "destroy"])
     ->middleware("can:admin");

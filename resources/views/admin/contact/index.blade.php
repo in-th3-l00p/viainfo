@@ -145,12 +145,20 @@
                             </p>
                         </div>
 
-                        <div>
+                        <div class="flex flex-col gap-4">
                             <a
                                 href="{{ route('admin.contact.show', $submission) }}"
                                 class="btn btn-primary"
+                                title="{{ __("Show") }}"
                             >
-                                {{ __("View") }}
+                                {{ __("Show") }}
+                            </a>
+                            <a
+                                href="{{ route('admin.contact.delete', $submission) }}"
+                                class="btn btn-primary"
+                                title="{{ __("Delete") }}"
+                            >
+                                {{ __("Delete") }}
                             </a>
                         </div>
                     </div>

@@ -101,19 +101,4 @@ class ContactNotificationReceiversController extends Controller
             ->route("admin.contact.index")
             ->with("success", __("Contact notification receiver deleted successfully."));
     }
-
-    public function trash()
-    {
-        Gate::authorize("viewAny", ContactSubmission::class);
-        return view("admin.contact.receivers.trash");
-    }
-
-    public function restore(ContactNotificationReceiver $receiver)
-    {
-        Gate::authorize("viewAny", ContactSubmission::class);
-        $receiver->restore();
-        return redirect()
-            ->route("admin.contact.index")
-            ->with("success", __("Contact notification receiver restored successfully."));
-    }
 }

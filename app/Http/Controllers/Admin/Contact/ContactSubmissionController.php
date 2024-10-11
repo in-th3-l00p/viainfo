@@ -19,37 +19,37 @@ class ContactSubmissionController extends Controller
         ]);
     }
 
-    public function show(ContactSubmission $contactSubmission)
+    public function show(ContactSubmission $contact)
     {
         Gate::authorize("view", [
             ContactSubmission::class,
-            $contactSubmission
+            $contact
         ]);
         return view("admin.contact.show", [
-            "contact" => $contactSubmission
+            "contact" => $contact
         ]);
     }
 
-    public function delete(ContactSubmission $contactSubmission)
+    public function delete(ContactSubmission $contact)
     {
         Gate::authorize("delete", [
             ContactSubmission::class,
-            $contactSubmission
+            $contact
         ]);
 
         return view("admin.contact.delete", [
-            "contact" => $contactSubmission
+            "contact" => $contact
         ]);
     }
 
-    public function destroy(ContactSubmission $contactSubmission)
+    public function destroy(ContactSubmission $contact)
     {
         Gate::authorize("delete", [
             ContactSubmission::class,
-            $contactSubmission
+            $contact
         ]);
 
-        $contactSubmission->delete();
+        $contact->delete();
         return redirect()
             ->route("admin.contact.index")
             ->with("success", __("Contact submission deleted successfully"));
@@ -59,18 +59,20 @@ class ContactSubmissionController extends Controller
     {
         Gate::authorize("viewAny", ContactSubmission::class);
         return view("admin.contact.trash", [
-            "contacts" => ContactSubmission::onlyTrashed()->latest()->paginate(10)
+            "contacts" => ContactSubmission::onlyTrashed()
+                ->latest()
+                ->paginate(10)
         ]);
     }
 
-    public function restore(ContactSubmission $contactSubmission)
+    public function restore(ContactSubmission $contact)
     {
         Gate::authorize("restore", [
             ContactSubmission::class,
-            $contactSubmission
+            $contact
         ]);
 
-        $contactSubmission->restore();
+        $contact->restore();
         return redirect()
             ->route("admin.contact.index")
             ->with("success", __("Contact submission restored successfully"));
