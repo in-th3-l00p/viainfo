@@ -1,5 +1,5 @@
 <a
-    href="{{ route("landing") }}"
+    href="{{ route("index") }}"
     title="Logo"
     class="mx-auto bg-white rounded-full p-4 mt-12 m-8"
 >
