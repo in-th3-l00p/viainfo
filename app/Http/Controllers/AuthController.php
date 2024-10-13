@@ -20,14 +20,14 @@ class AuthController extends Controller {
 
         if (!Auth::attempt($body))
             return redirect()
-                ->route("login")
+                ->back()
                 ->withErrors([
                     "auth" => __("Invalid email or password")
                 ]);
 
         if ($request->user()->role === "admin")
-            return redirect()->route("admin.dashboard");
-        return redirect()->route("user.dashboard");
+            return redirect()->intended(route("admin.dashboard"));
+        return redirect()->intended(route("user.dashboard"));
     }
 
     public function logout() {
