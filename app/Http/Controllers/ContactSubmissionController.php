@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactSubmissionEvent;
 use App\Models\ContactNotificationReceiver;
 use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class ContactSubmissionController extends Controller
             "phone_number" => "required|max:255",
             "message" => "required|max:1000"
         ]));
+        ContactSubmissionEvent::dispatch($submission);
 
         return back()
             ->with(
