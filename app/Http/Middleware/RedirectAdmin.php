@@ -17,7 +17,7 @@ class RedirectAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->role === "admin") {
+        if ($request->user() && $request->user()->role === "admin") {
             if ($request->route()->getName() === "user.dashboard")
                 return redirect()->route("admin.dashboard");
             if (
