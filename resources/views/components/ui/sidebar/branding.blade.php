@@ -1,5 +1,5 @@
 <a
-    href="{{ route("admin.dashboard") }}"
+    href="{{ route("landing") }}"
     title="Logo"
     class="mx-auto bg-white rounded-full p-4 mt-12 m-8"
 >
