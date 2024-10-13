@@ -44,7 +44,7 @@
                         class="checkbox"
                         @checked(
                             request()->roles === null ||
-                            in_array("users", request()->roles)
+                            in_array("user", request()->roles)
                         )
                     >
                     <label for="users">Users</label>
