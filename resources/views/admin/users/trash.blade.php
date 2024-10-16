@@ -20,8 +20,6 @@
 
 
             <div class="w-full mb-4 flex items-center gap-2 flex-wrap">
-                <h2 class="text-lg me-2">Operations:</h2>
-
                 <form>
                     <button
                         type="submit"

@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Users\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\UserController;
 
 Route::get("/users/delete/{user}", [UserController::class, "delete"])
     ->name("admin.users.delete");
@@ -14,3 +14,5 @@ Route::resource(
     "users",
     UserController::class, ["as" => "admin"]
 );
+
+require "users/invitations.php";

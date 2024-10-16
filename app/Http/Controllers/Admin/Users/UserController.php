@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -51,7 +50,7 @@ class UserController extends Controller
         Gate::authorize("create", User::class);
         $request->validate([
             "name" => "required|max:255",
-            "email" => "required|email|max:255|unique:users,email",
+            "email" => "required|email:rfc,dns|max:255|unique:users,email",
             "password" => "required|min:8|max:255",
             "role" => "required|in:user,admin"
         ]);

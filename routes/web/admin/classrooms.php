@@ -18,6 +18,6 @@ Route::resource(
     ->except("edit");
 
 //require "classroomTags.php"; todo remove
-require "classroomInvitations.php";
-require "classroomUsers.php";
-require "classroomEvents.php";
+require "classrooms/classroomInvitations.php";
+require "classrooms/classroomUsers.php";
+require "classrooms/classroomEvents.php";
