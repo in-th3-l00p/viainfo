@@ -16,6 +16,6 @@
 .dark-input {
     @include input;
     @apply
-        shadow-indigo-950 border-white bg-indigo-900 text-white
-        focus:shadow-indigo-950 hover:shadow-indigo-950;
+        shadow-blue-950 border-white bg-blue-900 text-white
+        focus:shadow-blue-950 hover:shadow-blue-950;
 }

@@ -5,7 +5,7 @@
         <select
             id="tabs"
             name="tabs"
-            class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
         >
             <option x-bind:selected="typeTab === 'user'">{{ __("Platform's user") }}</option>
             <option x-bind:selected="typeTab === 'custom'">{{ __("Custom") }}</option>
@@ -24,7 +24,7 @@
                 <span
                     aria-hidden="true"
                     class="absolute inset-x-0 bottom-0 h-0.5"
-                    x-bind:class="typeTab === 'user' ? 'bg-indigo-500' : 'bg-transparent'"
+                    x-bind:class="typeTab === 'user' ? 'bg-blue-500' : 'bg-transparent'"
                 ></span>
             </button>
             <button
@@ -38,7 +38,7 @@
                 <span
                     aria-hidden="true"
                     class="absolute inset-x-0 bottom-0 h-0.5"
-                    x-bind:class="typeTab === 'custom' ? 'bg-indigo-500' : 'bg-transparent'"
+                    x-bind:class="typeTab === 'custom' ? 'bg-blue-500' : 'bg-transparent'"
                 ></span>
             </button>
         </nav>

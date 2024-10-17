@@ -3,7 +3,7 @@
         <div class="sm:hidden">
             <label for="tabs" class="sr-only">{{ __("Select a tab") }}</label>
             <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500">
 {{--                <option x-bind:selected="tab === 'feed'">{{ __("Feed") }}</option>--}}
                 <option x-bind:selected="tab === 'people'">{{ __("People") }}</option>
                 <option x-bind:selected="tab === 'events'">{{ __("Events") }}</option>
@@ -24,7 +24,7 @@
 {{--                    <span--}}
 {{--                        aria-hidden="true"--}}
 {{--                        class="absolute inset-x-0 bottom-0 h-0.5"--}}
-{{--                        x-bind:class="tab === 'feed' ? 'bg-indigo-500' : 'bg-transparent'"--}}
+{{--                        x-bind:class="tab === 'feed' ? 'bg-blue-500' : 'bg-transparent'"--}}
 {{--                    ></span>--}}
 {{--                </button>--}}
                 <button
@@ -38,7 +38,7 @@
                     <span
                         aria-hidden="true"
                         class="absolute inset-x-0 bottom-0 h-0.5"
-                        x-bind:class="tab === 'people' ? 'bg-indigo-500' : 'bg-transparent'"
+                        x-bind:class="tab === 'people' ? 'bg-blue-500' : 'bg-transparent'"
                     ></span>
                 </button>
                 <button
@@ -52,7 +52,7 @@
                     <span
                         aria-hidden="true"
                         class="absolute inset-x-0 bottom-0 h-0.5"
-                        x-bind:class="tab === 'events' ? 'bg-indigo-500' : 'bg-transparent'"
+                        x-bind:class="tab === 'events' ? 'bg-blue-500' : 'bg-transparent'"
                     ></span>
                 </button>
                 <button
@@ -66,7 +66,7 @@
                     <span
                         aria-hidden="true"
                         class="absolute inset-x-0 bottom-0 h-0.5"
-                        x-bind:class="tab === 'settings' ? 'bg-indigo-500' : 'bg-transparent'"
+                        x-bind:class="tab === 'settings' ? 'bg-blue-500' : 'bg-transparent'"
                     ></span>
                 </button>
             </nav>

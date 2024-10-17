@@ -56,7 +56,7 @@
                             <input
                                 id="user-{{ $user->id }}"
                                 type="checkbox"
-                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                                 wire:model="selectedUsers"
                                 value="{{ $user->id }}"
                             >

@@ -11,7 +11,7 @@
     >
         <nav
             @class([
-                "flex flex-col w-screen xs:max-w-52 h-full bg-indigo-700 shadow-lg"
+                "flex flex-col w-screen xs:max-w-52 h-full bg-blue-700 shadow-lg"
             ])
         >
             {{ $slot }}
@@ -27,9 +27,9 @@
         "
         @class([
             "absolute top-0 left-0",
-            "rounded-full p-4 m-2 w-12 h-12 bg-indigo-400",
+            "rounded-full p-4 m-2 w-12 h-12 bg-blue-400",
             "flex justify-center items-center",
-            "hover:bg-indigo-500 hover:scale-105 transition-all"
+            "hover:bg-blue-500 hover:scale-105 transition-all"
         ])
         x-bind:class="open ? 'absolute' : ''"
     >

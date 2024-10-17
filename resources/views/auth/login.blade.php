@@ -12,7 +12,7 @@
             <div class="self-start">
                 <a
                     href="{{ route("index") }}"
-                    class="text-sm font-semibold leading-7 text-indigo-600"
+                    class="text-sm font-semibold leading-7 text-blue-600"
                 >
                     <i class="fa-solid fa-arrow-left me-2"></i>
                     {{ __("Back to home page") }}

@@ -728,12 +728,12 @@ phabricator:
     - phabricator
   label: Phabricator
   url: 'http://phacility.com'
-pindigo:
+pblue:
   icons:
     - person-pinball
     - pinball
-  label: Pindigo
-  url: 'https://pindigo.app'
+  label: Pblue
+  url: 'https://pblue.app'
 play-shakespeare:
   icons:
     - user-shakespeare

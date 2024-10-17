@@ -23,7 +23,7 @@
                             Programul "Hai la Olimpiadă!" îți oferă oportunitatea de a-ți dezvolta pasiunea pentru informatică. Alături de profesori experimentați și colegi pasionați, vei aprofunda cunoștințele și te vei pregăti pentru competiții și olimpiade de informatică.
                         </p>
                         <div class="mt-10 flex items-center gap-x-6">
-                            <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Înscrie-te acum</a>
+                            <a href="#" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Înscrie-te acum</a>
                             <a href="#{{ __("despre") }}" class="text-sm font-semibold leading-6 text-gray-900">Află mai multe <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
