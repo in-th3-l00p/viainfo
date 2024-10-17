@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserInvitation;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Middleware\ThrottleRequestsWithRedis;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -149,5 +150,34 @@ class UserInvitationController extends Controller
         return redirect()
             ->route('admin.users.invitations.index')
             ->with('success', __('Invitation deleted successfully'));
+    }
+
+    public function batchDelete(Request $request)
+    {
+        Gate::authorize('create', User::class);
+        $request->validate([
+            "invitations" => "required|array",
+            "invitations.*" => "required|exists:user_invitations,id"
+        ]);
+        return view('admin.users.invitations.batchDelete', [
+            'invitations' => UserInvitation::query()
+                ->whereIn('id', $request->invitations)
+                ->get()
+        ]);
+    }
+
+    public function batchDestroy(Request $request)
+    {
+        Gate::authorize('create', User::class);
+        $request->validate([
+            "invitations" => "required|array",
+            "invitations.*" => "required|exists:user_invitations,id"
+        ]);
+        UserInvitation::query()
+            ->whereIn('id', $request->invitations)
+            ->delete();
+        return redirect()
+            ->route('admin.users.invitations.index')
+            ->with('success', __('Invitations deleted successfully'));
     }
 }

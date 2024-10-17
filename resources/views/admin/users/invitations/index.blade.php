@@ -24,7 +24,10 @@
             </div>
         @endif
 
-        <div class="mb-16">
+        <div
+            class="mb-16"
+            x-data="{ selected: [] }"
+        >
             <x-admin.operations.container class="mb-4">
                 <x-admin.operations.route
                     :title="__('Add a user invitation')"
@@ -32,6 +35,33 @@
                     icon="fa-plus"
                 />
             </x-admin.operations.container>
+
+            <div
+                x-show="selected.length > 0"
+                class="my-4"
+            >
+                <p class="mb-2">{{ __("Selected") }}:</p>
+                <x-admin.operations.container>
+                    <form action="{{ route("admin.users.invitations.batchDelete") }}">
+                        <template x-for="id in selected">
+                            <input
+                                type="hidden"
+                                x-bind:id="'invitations-' + id"
+                                name="invitations[]"
+                                x-bind:value="id"
+                            >
+                        </template>
+
+                        <button
+                            type="submit"
+                            class="icon-btn"
+                            title="{{ __("Delete selected") }}"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </x-admin.operations.container>
+            </div>
 
             @if ($invitations->count() > 0)
                 <ul role="list" class="divide-y divide-gray-100 rounded-md shadow-md">
@@ -41,7 +71,13 @@
                             "rounded-t-md" => $loop->first,
                             "rounded-b-md" => $loop->last,
                         ])>
-                            <div class="flex min-w-0 gap-x-4">
+                            <div class="flex min-w-0 gap-x-4 items-center gap-4">
+                                <input
+                                    type="checkbox"
+                                    class="rounded-md"
+                                    @click="selected.includes('{{ $invitation->id }}') ? selected = selected.filter(id => id !== '{{ $invitation->id }}') : selected.push('{{ $invitation->id }}')"
+                                >
+
                                 <div class="min-w-0 flex-auto">
                                     <p class="text-sm font-semibold leading-6 text-gray-900">
                                         {{ $invitation->name }}
@@ -52,6 +88,11 @@
                                 </div>
                             </div>
                             <div class="flex shrink-0 items-center gap-x-6">
+                                @if ($invitation->sent)
+                                    <p class="text-red-600">{{ __("Sent") }}</p>
+                                @else
+                                    <p class="text-red-600">{{ __("Unsent") }}</p>
+                                @endif
                                 <div
                                     x-data="{ dropdownOpen: false }"
                                     class="relative flex-none"
