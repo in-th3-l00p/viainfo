@@ -47,8 +47,8 @@ class UserInvitationController extends Controller
 
             $errors = [];
             foreach ($csv as $index => $row) {
-                $name = $row[$nameIndex];
-                $email = $row[$emailIndex];
+                $name = trim($row[$nameIndex]);
+                $email = trim($row[$emailIndex]);
 
                 $validator = Validator::make([
                     'name' => $name,
@@ -64,16 +64,19 @@ class UserInvitationController extends Controller
                     ]
                 ]);
                 if ($validator->fails()) {
-                    foreach ($validator->errors() as $key => $error) {
-                        dd($error);
-                        $errors[$row][$key] = $error;
-                    }
+                    foreach ($validator->messages()->messages() as $key => $error)
+                        $errors[$index . '-' . $key] =
+                            __("Row's") . " " . $index  . " " . $key . ' - ' .
+                            ($key === "name" ? $name : $email) .
+                            ": " .
+                            $error[0];
                 }
             }
 
             foreach ($csv as $index => $row) {
                 if (
-                    array_key_exists($index, $errors) ||
+                    array_key_exists($index . '-email', $errors) ||
+                    array_key_exists($index . '-name', $errors) ||
                     UserInvitation::query()
                         ->where("email", "=", $row[$emailIndex])
                         ->exists()
