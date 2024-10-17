@@ -5,6 +5,7 @@
         :title="__('Create User Invitation')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
+            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
             [ 'href' => route('admin.users.invitations.index'), 'name' => __('User Invitations') ],
             [ 'name' => __('Create') ],
         ]"

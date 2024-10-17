@@ -134,18 +134,18 @@ class UserInvitationController extends Controller
         }
     }
 
-    public function delete(UserInvitation $userInvitation)
+    public function delete(UserInvitation $invitation)
     {
-        Gate::authorize('delete', $userInvitation);
+        Gate::authorize('create', User::class);
         return view('admin.users.invitations.delete', [
-            'invitation' => $userInvitation
+            'invitation' => $invitation
         ]);
     }
 
-    public function destroy(UserInvitation $userInvitation)
+    public function destroy(UserInvitation $invitation)
     {
-        Gate::authorize('delete', $userInvitation);
-        $userInvitation->delete();
+        Gate::authorize('create', User::class);
+        $invitation->delete();
         return redirect()
             ->route('admin.users.invitations.index')
             ->with('success', __('Invitation deleted successfully'));
