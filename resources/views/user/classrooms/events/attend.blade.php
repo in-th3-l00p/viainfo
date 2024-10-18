@@ -29,13 +29,17 @@
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
-        <form action="{{ route('classrooms.events.attend', [
-            'classroom' => $classroom,
-            'event' => $event
-        ]) }}" method="POST">
+        <form
+            action="{{ route('classrooms.events.attend', [
+                'classroom' => $classroom,
+                'event' => $event
+            ]) }}"
+            method="POST"
+            class="max-w-xl"
+        >
             @csrf
 
-            <div class="mb-4">
+            <div class="mb-8">
                 <div class="form-group">
                     <label
                         for="attend_code"
