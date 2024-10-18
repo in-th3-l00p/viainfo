@@ -2,7 +2,7 @@
     x-bind:class="inviteModalOpened ? 'opacity-100' : 'opacity-0 hidden'"
     @class([
         "invite-modal",
-        "absolute top-0 left-0 w-screen h-screen z-50",
+        "fixed top-0 left-0 w-screen h-screen z-50",
         "bg-black bg-opacity-50",
         "flex justify-center items-center",
         "transition-all"
@@ -67,12 +67,22 @@
             {{ $users->links() }}
         </div>
 
-        <button
-            type="submit"
-            class="mt-auto btn self-start"
-            @click="inviteModalOpened = false"
-        >
-            Invite
-        </button>
+        <div class="mt-auto self-start flex gap-4">
+            <button
+                type="submit"
+                class="btn"
+                @click="inviteModalOpened = false"
+            >
+                {{ __("Invite") }}
+            </button>
+
+            <button
+                type="button"
+                class="btn"
+                wire:click="add"
+            >
+                {{ __("Add") }}
+            </button>
+        </div>
     </form>
 </div>

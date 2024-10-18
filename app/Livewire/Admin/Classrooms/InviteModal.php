@@ -57,6 +57,23 @@ class InviteModal extends Component
         $this->dispatch("users-invited");
     }
 
+    public function add() {
+        $this->validate([
+            "selectedUsers" => "required|array|min:1",
+            "selectedUsers.*" => "exists:users,id"
+        ]);
+        foreach ($this->selectedUsers as $userId) {
+            if ($this->classroom->users()->where("user_id", "=", $userId)->exists())
+                continue;
+            $this
+                ->classroom
+                ->users()
+                ->attach($userId);
+        }
+        $this->dispatch("users-added");
+        $this->js('window.location.reload()'); // todo stop refreshing, just update
+    }
+
     #[On("search-updated")]
     public function refresh() {
     }
