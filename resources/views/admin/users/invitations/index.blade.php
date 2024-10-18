@@ -34,14 +34,17 @@
                     :href="route('admin.users.invitations.create')"
                     icon="fa-plus"
                 />
-            </x-admin.operations.container>
 
-            <div
-                x-show="selected.length > 0"
-                class="my-4"
-            >
-                <p class="mb-2">{{ __("Selected") }}:</p>
-                <x-admin.operations.container>
+                <button
+                    type="button"
+                    class="icon-btn"
+                    title="{{ __("Select all") }}"
+                    @click="selected.length !== {{ $invitations->count() }} ? selected = [ {{ $invitations->pluck('id')->join(", ") }} ] : selected = []"
+                >
+                    <i class="fa-solid fa-check-square"></i>
+                </button>
+
+                <template x-if="selected.length > 0">
                     <form action="{{ route("admin.users.invitations.batchDelete") }}">
                         <template x-for="id in selected">
                             <input
@@ -54,13 +57,17 @@
 
                         <button
                             type="submit"
-                            class="icon-btn"
+                            class="icon-btn ms-4"
                             title="{{ __("Delete selected") }}"
                         >
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
 
+
+                </template>
+
+                <template x-if="selected.length > 0">
                     <form
                         method="post"
                         action="{{ route("admin.users.invitations.send.batch") }}"
@@ -84,8 +91,8 @@
                             <i class="fa-solid fa-envelope"></i>
                         </button>
                     </form>
-                </x-admin.operations.container>
-            </div>
+                </template>
+            </x-admin.operations.container>
 
             @if ($invitations->count() > 0)
                 <ul role="list" class="divide-y divide-gray-100 rounded-md shadow-md">
@@ -99,7 +106,8 @@
                                 <input
                                     type="checkbox"
                                     class="rounded-md"
-                                    @click="selected.includes('{{ $invitation->id }}') ? selected = selected.filter(id => id !== '{{ $invitation->id }}') : selected.push('{{ $invitation->id }}')"
+                                    @click="selected.includes({{ $invitation->id }}) ? selected = selected.filter(id => id !== {{ $invitation->id }}) : selected.push({{ $invitation->id }})"
+                                    x-bind:checked="selected.includes({{ $invitation->id }})"
                                 >
 
                                 <div class="min-w-0 flex-auto">
@@ -136,7 +144,7 @@
                                         </svg>
                                     </button>
 
-                                    <div.env
+                                    <div
                                         class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none transition-all"
                                         role="menu"
                                         aria-orientation="vertical"
@@ -182,7 +190,7 @@
                                         >
                                             {{ __("Remove") }}
                                         </a>
-                                    </div.env>
+                                    </div>
                                 </div>
                             </div>
                         </li>
