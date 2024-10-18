@@ -78,7 +78,8 @@ class Classroom extends Model
     public function invitedUsers(): BelongsToMany {
         return $this
             ->belongsToMany(User::class, "classroom_invitations")
-            ->withPivot("created_at as invited_at")
+            ->select('users.*', 'classroom_invitations.created_at as invited_at')
+            ->withPivot("created_at")
             ->orderBy("invited_at", "desc");
     }
 

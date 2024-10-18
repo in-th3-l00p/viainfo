@@ -18,12 +18,12 @@
             <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
                 <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                     <div class="relative w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Alătură-te cercului de informatică "Hai la Olimpiadă!"</h1>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Alătură-te cercului de informatică "ViaInfo"</h1>
                         <p class="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-                            Programul "Hai la Olimpiadă!" îți oferă oportunitatea de a-ți dezvolta pasiunea pentru informatică. Alături de profesori experimentați și colegi pasionați, vei aprofunda cunoștințele și te vei pregăti pentru competiții și olimpiade de informatică.
+                            Programul "ViaInfo" îți oferă oportunitatea de a-ți dezvolta pasiunea pentru informatică. Alături de profesori experimentați și colegi pasionați, vei aprofunda cunoștințele și te vei pregăti pentru competiții și olimpiade de informatică.
                         </p>
                         <div class="mt-10 flex items-center gap-x-6">
-                            <a href="#" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Înscrie-te acum</a>
+                            <a href="{{ route("login") }}" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">{{ request()->user() ? "Accesează platforma" : "Loghează-te" }}</a>
                             <a href="#{{ __("despre") }}" class="text-sm font-semibold leading-6 text-gray-900">Află mai multe <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
