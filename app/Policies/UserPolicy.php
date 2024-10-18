@@ -32,6 +32,6 @@ class UserPolicy
     }
 
     public function forceDelete(User $user, User $model): bool {
-        return false;
+        return $user->role === "admin";
     }
 }

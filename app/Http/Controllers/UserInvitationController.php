@@ -37,6 +37,10 @@ class UserInvitationController extends Controller
             "role" => "user"
         ]);
 
+        UserInvitation::query()
+            ->where("token", $request->input("token"))
+            ->delete();
+
         return redirect()
             ->route("login")
             ->with([ "success" => __("Account created successfully") ]);
