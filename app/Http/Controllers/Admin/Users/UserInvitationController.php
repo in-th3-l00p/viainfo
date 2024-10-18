@@ -17,7 +17,9 @@ class UserInvitationController extends Controller
     {
         Gate::authorize('create', User::class);
         return view('admin.users.invitations.index', [
-            'invitations' => UserInvitation::all()
+            'invitations' => UserInvitation::query()
+                ->orderBy("sent")
+                ->get()
         ]);
     }
 
@@ -179,5 +181,36 @@ class UserInvitationController extends Controller
         return redirect()
             ->route('admin.users.invitations.index')
             ->with('success', __('Invitations deleted successfully'));
+    }
+
+    public function send(UserInvitation $invitation)
+    {
+        Gate::authorize('create', User::class);
+        $invitation->send();
+        return redirect()
+            ->route('admin.users.invitations.index')
+            ->with('success', __('Invitation sent successfully'));
+    }
+
+    public function batchSend(Request $request)
+    {
+        Gate::authorize('create', User::class);
+        $request->validate([
+            "invitations" => "required|array",
+            "invitations.*" => "required|exists:user_invitations,id"
+        ]);
+        $invitations = UserInvitation::query()
+            ->whereIn('id', $request->invitations)
+            ->get();
+        $errors = [];
+        foreach ($invitations as $invitation) {
+            if ($invitation->sent)
+                $errors[$invitation->email] = $invitation->email . ": " . __('Already sent');
+            $invitation->send();
+        }
+        return redirect()
+            ->route('admin.users.invitations.index')
+            ->with('success', __('Invitations sent successfully'))
+            ->withErrors($errors);
     }
 }

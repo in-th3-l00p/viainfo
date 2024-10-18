@@ -60,6 +60,30 @@
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
+
+                    <form
+                        method="post"
+                        action="{{ route("admin.users.invitations.send.batch") }}"
+                    >
+                        @csrf
+
+                        <template x-for="id in selected">
+                            <input
+                                type="hidden"
+                                x-bind:id="'invitations-' + id"
+                                name="invitations[]"
+                                x-bind:value="id"
+                            >
+                        </template>
+
+                        <button
+                            type="submit"
+                            class="icon-btn"
+                            title="{{ __("Send selected") }}"
+                        >
+                            <i class="fa-solid fa-envelope"></i>
+                        </button>
+                    </form>
                 </x-admin.operations.container>
             </div>
 
@@ -89,7 +113,7 @@
                             </div>
                             <div class="flex shrink-0 items-center gap-x-6">
                                 @if ($invitation->sent)
-                                    <p class="text-red-600">{{ __("Sent") }}</p>
+                                    <p class="text-green-600">{{ __("Sent") }}</p>
                                 @else
                                     <p class="text-red-600">{{ __("Unsent") }}</p>
                                 @endif
@@ -112,7 +136,7 @@
                                         </svg>
                                     </button>
 
-                                    <div
+                                    <div.env
                                         class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none transition-all"
                                         role="menu"
                                         aria-orientation="vertical"
@@ -121,6 +145,31 @@
                                         x-bind:class="dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95' "
                                         x-show="dropdownOpen"
                                     >
+                                        <form
+                                            method="post"
+                                            action="{{ route("admin.users.invitations.send", [ "invitation" => $invitation ]) }}"
+                                        >
+                                            @csrf
+
+                                            <button
+                                                type="submit"
+                                                class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                                role="menuitem"
+                                                tabindex="-1"
+                                                id="options-menu-0-item-0"
+                                                @if ($invitation->sent)
+                                                    title="{{ __("Resend") }}"
+                                                @else
+                                                    title="{{ __("Send") }}"
+                                                @endif
+                                            >
+                                                @if ($invitation->sent)
+                                                    {{ __("Resend") }}
+                                                @else
+                                                    {{ __("Send") }}
+                                                @endif
+                                            </button>
+                                        </form>
                                         <a
                                             class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
                                             role="menuitem"
@@ -133,7 +182,7 @@
                                         >
                                             {{ __("Remove") }}
                                         </a>
-                                    </div>
+                                    </div.env>
                                 </div>
                             </div>
                         </li>

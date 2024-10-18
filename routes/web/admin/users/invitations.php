@@ -3,6 +3,17 @@
 use App\Http\Controllers\Admin\Users\UserInvitationController;
 use Illuminate\Support\Facades\Route;
 
+Route::post("/users/invitations/send/batch", [
+    UserInvitationController::class,
+    "batchSend"
+])
+    ->name("admin.users.invitations.send.batch");
+Route::post("/users/invitations/send/{invitation}", [
+    UserInvitationController::class,
+    "send"
+])
+    ->name("admin.users.invitations.send");
+
 Route::get("/users/invitations/delete/batch", [
     UserInvitationController::class,
     "batchDelete"

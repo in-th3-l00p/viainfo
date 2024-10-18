@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Mail\InvitationMail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class UserInvitation extends Model
 {
@@ -19,5 +21,13 @@ class UserInvitation extends Model
 
     public function inviter() {
         return $this->belongsTo(User::class, "invited_by");
+    }
+
+    public function send() {
+        $this->update([
+            "sent" => true,
+        ]);
+        Mail::to($this->email)
+            ->send(new InvitationMail($this));
     }
 }
