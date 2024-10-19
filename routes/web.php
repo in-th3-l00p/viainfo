@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserInvitationController;
+use App\Http\Controllers\Auth\UserInvitationController;
 use App\Http\Controllers\ContactSubmissionController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;

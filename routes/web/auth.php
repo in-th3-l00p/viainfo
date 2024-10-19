@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
-Route::get("/login", [AuthController::class, "loginForm"])
+Route::get("/login", [LoginController::class, "loginForm"])
     ->name("login");
-Route::post("/login", [AuthController::class, "loginSubmit"])
+Route::post("/login", [LoginController::class, "loginSubmit"])
     ->name("login.submit");
-Route::get("/logout", [AuthController::class, "logout"])
+Route::get("/logout", [LoginController::class, "logout"])
     ->name("logout");

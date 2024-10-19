@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ClassroomInvitationController;
+use App\Http\Controllers\User\Classrooms\ClassroomInvitationController;
 use Illuminate\Support\Facades\Route;
 
 Route::post("/classrooms/{classroom}/invitations/accept", [
