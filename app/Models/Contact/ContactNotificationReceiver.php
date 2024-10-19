@@ -1,25 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Contact;
 
-use App\Models\Classroom\Classroom;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClassroomInvitation extends Model
+class ContactNotificationReceiver extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         "user_id",
-        "classroom_id"
+        "name",
+        "email"
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
-    }
-
-    public function classroom() {
-        return $this->belongsTo(Classroom::class);
     }
 }

@@ -1,12 +1,12 @@
 @php
-    use App\Models\Classroom\Classroom;use App\Models\ClassroomEvent;use App\Models\User;
+    use App\Models\Classroom\Classroom;use App\Models\Classroom\ClassroomEvent;use App\Models\User;
 @endphp
 @extends("layouts.main")
 
 @section("content")
     <x-layout
-        :title="__('Hello') . ', ' . request()->user()->name . '!'"
-        :breadcrumbPath="[
+            :title="__('Hello') . ', ' . request()->user()->name . '!'"
+            :breadcrumbPath="[
             [ 'name' => __('Dashboard') ],
         ]"
     >
@@ -47,31 +47,31 @@
         <h2 class="section-title">{{ __("Quick access") }}</h2>
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <x-ui.dashboard.quick-access
-                :title="__('Users')"
-                :description="__('Access the platform\'s users')"
-                :href="route('admin.users.index')"
-                icon="fa-table"
+                    :title="__('Users')"
+                    :description="__('Access the platform\'s users')"
+                    :href="route('admin.users.index')"
+                    icon="fa-table"
             />
 
             <x-ui.dashboard.quick-access
-                :title="__('Classrooms')"
-                :description="__('Access the platform\'s classrooms')"
-                :href="route('admin.classrooms.index')"
-                icon="fa-chalkboard"
+                    :title="__('Classrooms')"
+                    :description="__('Access the platform\'s classrooms')"
+                    :href="route('admin.classrooms.index')"
+                    icon="fa-chalkboard"
             />
 
             <x-ui.dashboard.quick-access
-                :title="__('Profile')"
-                :description="__('Access your profile')"
-                :href="route('account.index')"
-                icon="fa-user"
+                    :title="__('Profile')"
+                    :description="__('Access your profile')"
+                    :href="route('account.index')"
+                    icon="fa-user"
             />
 
             <x-ui.dashboard.quick-access
-                :title="__('Contact')"
-                :description="__('Access the platform\'s contact submissions')"
-                :href="route('admin.contact.index')"
-                icon="fa-message"
+                    :title="__('Contact')"
+                    :description="__('Access the platform\'s contact submissions')"
+                    :href="route('admin.contact.index')"
+                    icon="fa-message"
             />
         </div>
     </x-layout>

@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Contact;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ContactSubmission>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contact\ContactSubmission>
  */
 class ContactSubmissionFactory extends Factory
 {

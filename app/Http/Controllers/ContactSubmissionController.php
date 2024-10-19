@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Events\ContactSubmissionEvent;
-use App\Models\ContactNotificationReceiver;
-use App\Models\ContactSubmission;
+use App\Models\Contact\ContactSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class ContactSubmissionController extends Controller
 {

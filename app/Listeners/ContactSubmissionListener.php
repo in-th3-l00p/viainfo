@@ -4,9 +4,8 @@ namespace App\Listeners;
 
 use App\Events\ContactSubmissionEvent;
 use App\Mail\ContactNotificationMail;
-use App\Models\ContactNotificationReceiver;
+use App\Models\Contact\ContactNotificationReceiver;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
 class ContactSubmissionListener implements ShouldQueue

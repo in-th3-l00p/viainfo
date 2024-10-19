@@ -3,10 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Classroom\Classroom;
-use App\Models\ContactSubmission;
+use App\Models\Contact\ContactSubmission;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {

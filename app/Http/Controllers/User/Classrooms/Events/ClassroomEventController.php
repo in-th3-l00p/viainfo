@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User\Classrooms\Events;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom\Classroom;
-use App\Models\ClassroomEvent;
+use App\Models\Classroom\ClassroomEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;

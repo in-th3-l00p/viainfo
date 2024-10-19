@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Classroom;
 
-use App\Models\Classroom\Classroom;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

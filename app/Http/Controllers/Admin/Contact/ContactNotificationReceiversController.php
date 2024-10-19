@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Contact;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactNotificationReceiver;
-use App\Models\ContactSubmission;
+use App\Models\Contact\ContactNotificationReceiver;
+use App\Models\Contact\ContactSubmission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;

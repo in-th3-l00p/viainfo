@@ -3,9 +3,8 @@
 namespace App\Policies;
 
 use App\Models\Classroom\Classroom;
-use App\Models\ClassroomEvent;
+use App\Models\Classroom\ClassroomEvent;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ClassroomEventPolicy
 {

@@ -2,7 +2,6 @@
 
 namespace App\Models\Classroom;
 
-use App\Models\ClassroomEvent;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
