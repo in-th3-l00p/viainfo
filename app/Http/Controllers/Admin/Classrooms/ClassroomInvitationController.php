@@ -15,21 +15,17 @@ class ClassroomInvitationController extends Controller
         Classroom $classroom,
         User $user
     ) {
-        Gate::denyAsNotFound(
-            !$classroom
-                ->invitedUsers()
-                ->where("user_id", "=", $request->user()->id)
-                ->exists() ||
-            $request->user()->role !== "admin" ||
-            !$classroom
-                ->teachers()
-                ->where("user_id", "=", $user->id)->exists()
-        );
+        Gate::authorize("update", $classroom);
+        if (!$classroom->invitedUsers->contains($user)) {
+            return redirect()
+                ->back()
+                ->withErrors(["user" => __("User is not invited")]);
+        }
         $classroom
             ->invitedUsers()
             ->detach($user);
         return redirect()
             ->back()
-            ->with("success", "Invitation removed");
+            ->with(["success" => __("Invitation removed")]);
     }
 }
