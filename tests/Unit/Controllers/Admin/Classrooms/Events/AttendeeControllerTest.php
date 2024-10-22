@@ -24,7 +24,7 @@ class AttendeeControllerTest extends TestCase
     }
 
     #[Test]
-    public function test_index_authorized()
+    public function test_index()
     {
         $classroom = Classroom::factory()->create(['owner_id' => $this->admin->id]);
         $classroom->users()->attach($this->admin, ['role' => 'teacher']);
@@ -54,7 +54,7 @@ class AttendeeControllerTest extends TestCase
     }
 
     #[Test]
-    public function test_markAsAttended_authorized()
+    public function test_markAsAttended()
     {
         $classroom = Classroom::factory()->create(['owner_id' => $this->admin->id]);
         $classroom->users()->attach($this->admin, ['role' => 'teacher']);
@@ -93,7 +93,7 @@ class AttendeeControllerTest extends TestCase
     }
 
     #[Test]
-    public function test_markAsNotAttended_authorized()
+    public function test_markAsNotAttended()
     {
         $classroom = Classroom::factory()->create(['owner_id' => $this->admin->id]);
         $classroom->users()->attach($this->admin, ['role' => 'teacher']);
@@ -134,7 +134,7 @@ class AttendeeControllerTest extends TestCase
     }
 
     #[Test]
-    public function test_showAttendCode_authorized()
+    public function test_showAttendCode()
     {
         $classroom = Classroom::factory()->create(['owner_id' => $this->admin->id]);
         $classroom->users()->attach($this->admin, ['role' => 'teacher']);
