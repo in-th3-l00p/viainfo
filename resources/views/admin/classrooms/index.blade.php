@@ -43,21 +43,6 @@
                             "hover:scale-105 hover:shadow-lg transition-all"
                         ])
                     >
-                        @if ($classroom->tags()->count() > 0)
-                            <div class="flex flex-wrap gap-2">
-                                @foreach ($testProject->tags()->get() as $tag)
-                                    <a
-                                        href="{{ route($role . ".tags.show", [
-                                            "tag" => $tag
-                                        ]) }}"
-                                        class="tag"
-                                    >
-                                        {{ $tag->name }}
-                                    </a>
-                                @endforeach
-                            </div>
-                        @endif
-
                         <h2 class="text-xl font-bold">{{ $classroom->name }}</h2>
                         <div class="mb-auto h-18 overflow-hidden line-clamp-3 text-ellipsis">
                             {!! $classroom->description !!}

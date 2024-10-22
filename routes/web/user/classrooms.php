@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\User\Classrooms\ClassroomController;
-use App\Http\Controllers\User\Classrooms\ClassroomTagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/classrooms/{classroom}/leave", [
@@ -15,8 +14,6 @@ Route::delete(
 )
     ->name("classrooms.leave");
 Route::resource("classrooms", ClassroomController::class)
-    ->only([ "index", "show" ]);
-Route::resource("classrooms.tags", ClassroomTagController::class)
     ->only([ "index", "show" ]);
 
 require "classroomInvitations.php";

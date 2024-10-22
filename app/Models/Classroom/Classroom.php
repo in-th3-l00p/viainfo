@@ -31,15 +31,6 @@ class Classroom extends Model
     }
 
     /**
-     * all the classroom's tags
-     * @return BelongsToMany: the tags associated with this classroom
-     */
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(ClassroomTag::class);
-    }
-
-    /**
      * all the classroom's users (students and teachers)
      * @return BelongsToMany: the users associated with this classroom
      */

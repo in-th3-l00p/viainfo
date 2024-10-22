@@ -27,14 +27,6 @@
                         "hover:scale-105 hover:shadow-lg transition-all"
                     ])
                 >
-                    @if ($classroom->tags()->count() > 0)
-                        <div class="flex flex-wrap gap-2">
-                            @foreach ($classroom->tags()->get() as $tag)
-                                <div class="tag-disabled">{{ $tag->name }}</div>
-                            @endforeach
-                        </div>
-                    @endif
-
                     <h2 class="text-xl font-bold mb-4">{{ $classroom->name }}</h2>
                     <div class="mb-auto h-18 overflow-hidden line-clamp-3 text-ellipsis">
                         {!! $classroom->description !!}

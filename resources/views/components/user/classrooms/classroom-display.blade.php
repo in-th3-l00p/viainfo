@@ -5,22 +5,6 @@
         "hover:scale-105 hover:shadow-lg transition-all mb-8"
     ])
 >
-    @if ($classroom->tags()->count() > 0)
-        <div class="flex flex-wrap gap-2">
-            @foreach ($testProject->tags()->get() as $tag)
-                <a
-                    href="{{ route("classrooms.tags.show", [
-                                            "classroom" => $classroom,
-                                            "tag" => $tag
-                                        ]) }}"
-                    class="tag"
-                >
-                    {{ $tag->name }}
-                </a>
-            @endforeach
-        </div>
-    @endif
-
     <div class="flex flex-wrap justify-between gap-8">
         <div>
             <h2 class="text-xl font-bold">{{ $classroom->name }}</h2>
