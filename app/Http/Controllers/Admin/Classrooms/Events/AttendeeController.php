@@ -22,8 +22,7 @@ class AttendeeController extends Controller
     public function markAsAttended(
         Classroom $classroom,
         ClassroomEvent $event,
-        User $user,
-        Request $request
+        User $user
     ) {
         Gate::authorize("update", [$classroom, $event]);
         $event->attendances()->attach($user);
@@ -35,8 +34,7 @@ class AttendeeController extends Controller
     public function markAsNotAttended(
         Classroom $classroom,
         ClassroomEvent $event,
-        User $user,
-        Request $request
+        User $user
     ) {
         Gate::authorize("update", [$classroom, $event]);
         $event->attendances()->detach($user);
