@@ -42,6 +42,7 @@ class UserInvitationController extends Controller
 
             $nameIndex = array_search('name', $header);
             $emailIndex = array_search('email', $header);
+            $classroomIndex = array_search('classroom', $header);
 
             if ($nameIndex === false || $emailIndex === false)
                 return redirect()
@@ -52,10 +53,14 @@ class UserInvitationController extends Controller
             foreach ($csv as $index => $row) {
                 $name = trim($row[$nameIndex]);
                 $email = trim($row[$emailIndex]);
+                $classroom = null;
+                if ($classroomIndex !== false)
+                    $classroom = trim($row[$classroomIndex]);
 
                 $validator = Validator::make([
                     'name' => $name,
-                    'email' => $email
+                    'email' => $email,
+                    'classroom' => $classroom
                 ], [
                     'name' => 'required|max:255',
                     'email' => [
@@ -64,7 +69,8 @@ class UserInvitationController extends Controller
                         'max:255',
                         'unique:users,email',
                         'unique:user_invitations,email'
-                    ]
+                    ],
+                    'classroom' => 'nullable|max:255|exists:classrooms,name'
                 ]);
                 if ($validator->fails()) {
                     foreach ($validator->messages()->messages() as $key => $error)
@@ -80,6 +86,7 @@ class UserInvitationController extends Controller
                 if (
                     array_key_exists($index . '-email', $errors) ||
                     array_key_exists($index . '-name', $errors) ||
+                    array_key_exists($index . '-classroom', $errors) ||
                     UserInvitation::query()
                         ->where("email", "=", $row[$emailIndex])
                         ->exists()
@@ -87,6 +94,9 @@ class UserInvitationController extends Controller
                     continue;
                 $name = $row[$nameIndex];
                 $email = $row[$emailIndex];
+                $classroom = null;
+                if ($classroomIndex !== false)
+                    $classroom = $row[$classroomIndex];
 
                 // generating an unique token
                 $token = Str::uuid();
@@ -97,6 +107,7 @@ class UserInvitationController extends Controller
                 UserInvitation::create([
                     'email' => $email,
                     'name' => $name,
+                    'classroom_name' => $classroom,
                     'token' => $token,
                     'invited_by' => auth()->id()
                 ]);
@@ -115,7 +126,8 @@ class UserInvitationController extends Controller
                     'max:255',
                     'unique:users,email',
                     'unique:user_invitations,email'
-                ]
+                ],
+                'classroom' => 'nullable|max:255|exists:classrooms,name'
             ]);
 
             // generating an unique token
@@ -127,6 +139,9 @@ class UserInvitationController extends Controller
             UserInvitation::create([
                 'email' => $request->email,
                 'name' => $request->name,
+                'classroom_name' => ($request->classroom && $request->classroom !== "")
+                    ? $request->classroom
+                    : null,
                 'token' => $token,
                 'invited_by' => auth()->id()
             ]);

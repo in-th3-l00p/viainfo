@@ -79,6 +79,16 @@
                 >
             </div>
 
+            <div class="form-group mb-4">
+                <label for="classroom" class="label w-32">{{ __("Classroom's name") }}:</label>
+                <input
+                    type="text" name="classroom" id="classroom"
+                    @class(["input", "ring-2 ring-rose-600" => $errors->has("classroom")])
+                    placeholder="{{ __("Classroom's name") }}"
+                    value="{{ old("classroom") }}"
+                >
+            </div>
+
             <button
                 type="submit"
                 class="btn"

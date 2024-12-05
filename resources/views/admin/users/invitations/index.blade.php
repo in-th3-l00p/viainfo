@@ -117,6 +117,11 @@
                                     <p class="mt-1 flex text-xs leading-5 text-gray-500">
                                         {{ $invitation->email }}
                                     </p>
+                                    @if ($invitation->classroom_name)
+                                        <p class="mt-1 flex text-xs leading-5 text-gray-500">
+                                            {{ $invitation->classroom_name }}
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="flex shrink-0 items-center gap-x-6">
@@ -185,8 +190,8 @@
                                             id="options-menu-0-item-0"
                                             title="{{ __("Remove") }}"
                                             href="{{ route("admin.users.invitations.delete", [
-                                                "invitation" => $invitation
-                                            ]) }}"
+                                "invitation" => $invitation
+                            ]) }}"
                                         >
                                             {{ __("Remove") }}
                                         </a>

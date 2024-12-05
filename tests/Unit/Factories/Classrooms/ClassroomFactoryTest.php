@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests\Unit\Factories;
+namespace Tests\Unit\Factories\Users\Classrooms;
 
 use App\Models\Classroom\Classroom;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\Unit\Factories\Users\Test;
 
 class ClassroomFactoryTest extends TestCase
 {

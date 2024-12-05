@@ -14,6 +14,7 @@ class UserInvitation extends Model
     protected $fillable = [
         "name",
         "email",
+        'classroom_name',
         "token",
         "invited_by",
         "sent",

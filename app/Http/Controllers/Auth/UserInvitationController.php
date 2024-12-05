@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom\Classroom;
 use App\Models\User;
 use App\Models\UserInvitation;
 use Illuminate\Http\Request;
@@ -31,16 +32,25 @@ class UserInvitationController extends Controller
             "password" => "required|confirmed|min:8|max:255",
         ]);
 
-        User::create([
+        $invitation = UserInvitation::query()
+            ->where("token", $request->input("token"))
+            ->firstOrFail();
+
+        $user = User::create([
             "name" => $request->input("name"),
             "email" => $request->input("email"),
             "password" => Hash::make($request->input("password")),
             "role" => "user"
         ]);
 
-        UserInvitation::query()
-            ->where("token", $request->input("token"))
-            ->delete();
+        if ($invitation->classroom_name) {
+            $classroom = Classroom::query()
+                ->where("name", $invitation->classroom_name)
+                ->first();
+            if ($classroom)
+                $classroom->users()->attach($user->id);
+        }
+        $invitation->delete();
 
         return redirect()
             ->route("login")
