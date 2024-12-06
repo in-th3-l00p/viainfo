@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", IndexController::class)
     ->name("index");
+Route::view("/privacy", "privacyPolicy")
+    ->name("privacy");
 Route::post("/contact", [
     ContactSubmissionController::class,
     "store"
