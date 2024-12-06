@@ -29,5 +29,12 @@
         {{ __("Contact") }}
     </x-ui.sidebar.link>
 
+    <x-ui.sidebar.link
+        route="admin.docs.index"
+        icon="fa-book"
+    >
+        {{ __("Docs") }}
+    </x-ui.sidebar.link>
+
     <x-ui.sidebar.user />
 </x-ui.sidebar>

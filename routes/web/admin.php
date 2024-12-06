@@ -12,4 +12,5 @@ Route::prefix("/admin")
         require "admin/users.php";
         require "admin/classrooms.php";
         require "admin/contact.php";
+        require "admin/docs.php";
     });
