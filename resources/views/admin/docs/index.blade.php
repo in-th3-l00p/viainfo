@@ -28,6 +28,7 @@
                         <div class="mt-2 text-sm text-yellow-700">
                             <p>{{ __("Din cauza unor probleme cu serviciul de trimitere de emailuri, unii utilizatori nu au primit invitația.") }}</p>
                             <p>{{ __("O soluție ar fi ca administratorii să trimită manual linkul de invitație utilizând opțiunea 'Copy link'.") }}</p>
+                            <p>{{ __("Opțiunea este documentată în pagina din documentație intitulată \"Invitații utilizatori pe platformă\"") }}</p>
                         </div>
                     </div>
                 </div>
@@ -35,7 +36,7 @@
 
             <!-- Secțiune Invitare Utilizatori -->
             <div class="mb-8">
-                <h3 class="text-lg font-semibold text-gray-800">{{ __("Invitatie utilizatori pe platforma") }}</h3>
+                <h3 class="text-lg font-semibold text-gray-800">{{ __("Invitatie utilizatori pe platformă") }}</h3>
                 <p class="text-sm text-gray-600 mb-2">{{ __("În această secțiune vei învăța cum să inviți noi utilizatori pe platformă și cum să gestionezi invitațiile acestora.") }}</p>
                 <a href="{{ route("admin.docs.invites") }}" class="text-blue-600 hover:underline text-sm">{{ __("Vezi detalii") }}</a>
             </div>

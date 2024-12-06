@@ -34,20 +34,20 @@
         </div>
 
         <div class="mb-16">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ __("Cum funcționează invitațiile utilizatorilor?") }}</h2>
-            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __("Cum funcționează invitațiile utilizatorilor?") }}</h2>
+            <p class="gtext-gray-600 leading-relaxed mb-4">
                 {{ __("Invitațiile pentru utilizatori sunt trimise prin email. Când un utilizator primește invitația, va găsi un link în email-ul respectiv care îi va permite să își creeze un cont pe platformă. Utilizatorul va putea alege o parolă, iar contul va fi activat automat.") }}
             </p>
         </div>
 
         <div class="mb-16">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ __("Pașii pentru a ajunge la pagina de invitații") }}</h2>
-            <p class="text-lg text-gray-600 mb-4">{{ __("Pentru a ajunge la pagina de invitații utilizatori, urmează acești pași:") }}</p>
-            <ol class="list-decimal pl-8 mb-4 text-lg text-gray-600">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __("Pașii pentru a ajunge la pagina de invitații") }}</h2>
+            <p class="gtext-gray-600 mb-4">{{ __("Pentru a ajunge la pagina de invitații utilizatori, urmează acești pași:") }}</p>
+            <ol class="list-decimal pl-8 mb-4 gtext-gray-600">
                 <li>{{ __("Din sidebar, accesează opțiunea 'Utilizatori'.") }}</li>
                 <li>{{ __("Pe pagina cu utilizatori, apasă pe butonul 'Invitație' aflat deasupra tabelului cu utilizatori.") }}</li>
             </ol>
-            <p class="text-lg text-gray-600 mb-4">{{ __("Pagina de invitații poate fi accesată și direct prin această rută: ") }}
+            <p class="gtext-gray-600 mb-4">{{ __("Pagina de invitații poate fi accesată și direct prin această rută: ") }}
                 <a href="{{ route('admin.users.invitations.index') }}" class="text-blue-500 hover:underline">Link</a>
             </p>
 
@@ -61,9 +61,9 @@
         </div>
 
         <div class="mb-16">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ __("Cum să iei link-ul de invitație al unui utilizator") }}</h2>
-            <p class="text-lg text-gray-600 mb-4">{{ __("Pentru a obține link-ul de invitație al unui utilizator, urmează acești pași:") }}</p>
-            <ol class="list-decimal pl-8 mb-4 text-lg text-gray-600">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __("Cum să iei link-ul de invitație al unui utilizator") }}</h2>
+            <p class="gtext-gray-600 mb-4">{{ __("Pentru a obține link-ul de invitație al unui utilizator, urmează acești pași:") }}</p>
+            <ol class="list-decimal pl-8 mb-4 gtext-gray-600">
                 <li>{{ __("Accesează meniul utilizatorului pentru care vrei să obții linkul de invitație.") }}</li>
                 <li>{{ __("Apasă pe opțiunea 'Copy link'. Acest lucru va copia linkul în clipboard-ul tău.") }}</li>
             </ol>
@@ -74,9 +74,9 @@
         </div>
 
         <div class="mb-16">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ __("Cum să inviți un utilizator pe platformă") }}</h2>
-            <p class="text-lg text-gray-600 mb-4">{{ __("Pentru a trimite o invitație unui utilizator, urmează acești pași:") }}</p>
-            <ol class="list-decimal pl-8 mb-4 text-lg text-gray-600">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ __("Cum să inviți un utilizator pe platformă") }}</h2>
+            <p class="gtext-gray-600 mb-4">{{ __("Pentru a trimite o invitație unui utilizator, urmează acești pași:") }}</p>
+            <ol class="list-decimal pl-8 mb-4 gtext-gray-600">
                 <li>{{ __("Accesează meniul de adăugare a unui utilizator nou.") }}</li>
                 <li>{{ __("Completează formularul cu informațiile necesare pentru utilizatorul care va primi invitația.") }}</li>
                 <li>{{ __("Apasă pe butonul de trimitere pentru a crea invitația.") }}</li>
