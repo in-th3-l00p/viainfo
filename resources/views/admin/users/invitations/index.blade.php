@@ -130,74 +130,85 @@
                                 @else
                                     <p class="text-red-600">{{ __("Unsent") }}</p>
                                 @endif
-                                <div
-                                    x-data="{ dropdownOpen: false }"
-                                    class="relative flex-none"
-                                >
-                                    <button
-                                        type="button"
-                                        class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
-                                        id="options-menu-0-button"
-                                        aria-expanded="false"
-                                        aria-haspopup="true"
-                                        @click="dropdownOpen = !dropdownOpen"
-                                    >
-                                        <span class="sr-only">Open options</span>
-                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path
-                                                d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"/>
-                                        </svg>
-                                    </button>
+
 
                                     <div
-                                        class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none transition-all"
-                                        role="menu"
-                                        aria-orientation="vertical"
-                                        aria-labelledby="options-menu-0-button"
-                                        tabindex="-1"
-                                        x-bind:class="dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95' "
-                                        x-show="dropdownOpen"
+                                        x-data="{ dropdownOpen: false }"
+                                        class="relative flex-none"
                                     >
-                                        <form
-                                            method="post"
-                                            action="{{ route("admin.users.invitations.send", [ "invitation" => $invitation ]) }}"
+                                        <button
+                                            type="button"
+                                            class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
+                                            id="options-menu-0-button"
+                                            aria-expanded="false"
+                                            aria-haspopup="true"
+                                            @click="dropdownOpen = !dropdownOpen"
                                         >
-                                            @csrf
+                                            <span class="sr-only">Open options</span>
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path
+                                                    d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"/>
+                                            </svg>
+                                        </button>
 
-                                            <button
-                                                type="submit"
+                                        <div
+                                            class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none transition-all"
+                                            role="menu"
+                                            aria-orientation="vertical"
+                                            aria-labelledby="options-menu-0-button"
+                                            tabindex="-1"
+                                            x-bind:class="dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95' "
+                                            x-show="dropdownOpen"
+                                        >
+                                            <form
+                                                method="post"
+                                                action="{{ route("admin.users.invitations.send", [ "invitation" => $invitation ]) }}"
+                                            >
+                                                @csrf
+
+                                                <button
+                                                    type="submit"
+                                                    class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                                    role="menuitem"
+                                                    tabindex="-1"
+                                                    id="options-menu-0-item-0"
+                                                    @if ($invitation->sent)
+                                                        title="{{ __("Resend") }}"
+                                                    @else
+                                                        title="{{ __("Send") }}"
+                                                    @endif
+                                                >
+                                                    @if ($invitation->sent)
+                                                        {{ __("Resend") }}
+                                                    @else
+                                                        {{ __("Send") }}
+                                                    @endif
+                                                </button>
+                                            </form>
+                                            <a
                                                 class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
                                                 role="menuitem"
                                                 tabindex="-1"
                                                 id="options-menu-0-item-0"
-                                                @if ($invitation->sent)
-                                                    title="{{ __("Resend") }}"
-                                                @else
-                                                    title="{{ __("Send") }}"
-                                                @endif
+                                                title="{{ __("Remove") }}"
+                                                href="{{ route("admin.users.invitations.delete", [
+                                                    "invitation" => $invitation
+                                                ]) }}"
                                             >
-                                                @if ($invitation->sent)
-                                                    {{ __("Resend") }}
-                                                @else
-                                                    {{ __("Send") }}
-                                                @endif
+                                                {{ __("Remove") }}
+                                            </a>
+                                            <button
+                                                type="button"
+                                                class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                                role="menuitem"
+                                                tabindex="-1"
+                                                id="copy-link-button"
+                                                @click="navigator.clipboard.writeText('{{ route("invitation.create", [ "token" => $invitation->token ]) }}').then(() => { dropdownOpen = false; })"
+                                            >
+                                                {{ __("Copy Link") }}
                                             </button>
-                                        </form>
-                                        <a
-                                            class="w-full block text-center px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
-                                            role="menuitem"
-                                            tabindex="-1"
-                                            id="options-menu-0-item-0"
-                                            title="{{ __("Remove") }}"
-                                            href="{{ route("admin.users.invitations.delete", [
-                                "invitation" => $invitation
-                            ]) }}"
-                                        >
-                                            {{ __("Remove") }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>                            </div>
                         </li>
                     @endforeach
                 </ul>
